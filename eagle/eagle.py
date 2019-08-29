@@ -74,17 +74,17 @@ class EagleDaemon(Daemon):
 
 
 if __name__ == "__main__":
-    try:
-        hostname = os.environ["HOSTNAME"]
-    except:
-        hostname = "localhost"
-        
-    if hostname == "":
-        hostname = "localhost"
-    else:
-        hostname = hostname.split('.')[0].strip()
+    output = subprocess.run(["hostname"], stdout=subprocess.PIPE)
+    hostname = output.stdout.decode("utf-8").strip(" \n")
 
-    print(f"Eagle Daemon on {hostname}")
+    if len(sys.argv) == 2:
+        pass
+    elif len(sys.argv) == 3:
+        hostname = sys.argv[2]
+        hostname = hostname.split('.')[0].strip()
+    else:
+        print("usage: " + sys.argv[0] + " start|stop|restart [hostname] ")
+        sys.exit(2)
 
     home = str(Path.home())
     if not os.path.isdir(home + "/.eagle/" + hostname):
@@ -95,17 +95,18 @@ if __name__ == "__main__":
     stderr = home + "/.eagle/" + hostname + "/eagle.err"
     statfile = home + "/.eagle/" + hostname + "/eagle.json"
     daemon = EagleDaemon(statfile, pidfilename, stdout, stderr)
-    if len(sys.argv) == 2:
-        if 'start' == sys.argv[1]:
-            daemon.start()
-        elif 'stop' == sys.argv[1]:
-            daemon.stop()
-        elif 'restart' == sys.argv[1]:
-            daemon.restart()
-        else:
-            print("Unknown command")
-            sys.exit(2)
-        sys.exit(0)
+
+    if 'start' == sys.argv[1]:
+        print("bw Daemon on " + hostname + " : Starting")
+        daemon.start()
+    elif 'stop' == sys.argv[1]:
+        print("bw Daemon on " + hostname + " : Stop")
+        daemon.stop()
+    elif 'restart' == sys.argv[1]:
+        print("bw Daemon on " + hostname + " : Restart")
+        daemon.restart()
     else:
-        print(f"usage: {sys.argv[0]} start|stop|restart")
+        print("Unknown command")
         sys.exit(2)
+        sys.exit(0)
+

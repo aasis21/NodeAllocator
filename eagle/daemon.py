@@ -5,6 +5,7 @@ import os
 import time
 import atexit
 import signal
+import sqlite3
 
 
 class Daemon:
@@ -77,8 +78,7 @@ class Daemon:
 			pid = None
 	
 		if pid:
-			message = "pidfile {0} already exist. " + \
-					"Daemon already running?\n"
+			message = "Daemon already Running !!!\n"
 			sys.stderr.write(message.format(self.pidfile))
 			sys.exit(1)
 		
@@ -97,8 +97,7 @@ class Daemon:
 			pid = None
 	
 		if not pid:
-			message = "pidfile {0} does not exist. " + \
-					"Daemon not running?\n"
+			message = "Daemon not Running !!!\n"
 			sys.stderr.write(message.format(self.pidfile))
 			return # not an error in a restart
 
@@ -126,3 +125,67 @@ class Daemon:
 		
 		It will be called after the process has been daemonized by 
 		start() or restart()."""
+
+	def setupDB(self, dbfile):
+		con = sqlite3.connect(dbfile)
+		cur = con.cursor()
+
+		print("Setting DB Tables ::: ", end = " ")
+
+		latency_sql = """
+		CREATE TABLE latency (
+			hostA INTEGER NOT NULL,
+			hostB INTEGER NOT NULL,
+			latency INTEGER NOT NULL,
+			time TIMESTAMP DEFAULT  (strftime('%s','now')),
+			PRIMARY KEY (hostA, hostB)
+		)"""
+
+		try:
+			cur.execute(latency_sql)
+		except:
+			print("LT Table : UP, ", end = " ")
+
+		latency_monitor_sql = """
+		CREATE TABLE latency_monitor (
+			id INTEGER PRIMARY KEY,
+			hostA INTEGER NOT NULL,
+			hostB INTEGER NOT NULL,
+			latency INTEGER NOT NULL,
+			time TIMESTAMP DEFAULT  (strftime('%s','now'))
+		)"""
+		try:
+			cur.execute(latency_monitor_sql)
+		except:
+			print("LT M Table : UP, ", end = " ")
+
+		bw_sql = """
+		CREATE TABLE bw (
+			hostA INTEGER NOT NULL,
+			hostB INTEGER NOT NULL,
+			bw INTEGER NOT NULL,
+			time TIMESTAMP DEFAULT  (strftime('%s','now')),
+			PRIMARY KEY (hostA, hostB)
+		)"""
+
+		try:
+			cur.execute(bw_sql)
+		except:
+			print("BW Table : UP, ", end = " ")
+
+		bw_monitor_sql = """
+		CREATE TABLE bw_monitor (
+			id INTEGER PRIMARY KEY,
+			hostA INTEGER NOT NULL,
+			hostB INTEGER NOT NULL,
+			bw INTEGER NOT NULL,
+			time TIMESTAMP DEFAULT  (strftime('%s','now'))
+		)"""
+		try:
+			cur.execute(bw_monitor_sql)
+		except:
+			print("BW M Table : UP, ", end = " ")
+		
+		print(" ::: DONE")
+
+		con.close()
