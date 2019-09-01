@@ -121,14 +121,13 @@ class EagleNodeDaemon(Daemon):
             queue = self.utilizationDeque[index]
             if len(queue) == 0:
                 queue.appendleft(node)
-                newNodesSum = node
+                self.utilizationSum[index] = node
             else:
                 if len(queue) == queue.maxlen:
                     removeNode = queue.pop()
                 else:
                     removeNode = 0  
-                newNodesSum = node + nodes_sum - removeNode
-
+                self.utilizationSum[index] = node + self.utilizationSum[index] - removeNode
                 queue.appendleft(node)
             
             self.utilizationSum[index] = newNodesSum
@@ -144,18 +143,17 @@ class EagleNodeDaemon(Daemon):
             queue = self.memoryDeque[index]
             if len(queue) == 0:
                 queue.appendleft(node)
-                newNodesSum = node
+                self.memorySum[index] = node
             else:
                 if len(queue) == queue.maxlen:
                     removeNode = queue.pop()
                 else:
                     removeNode = 0  
-                newNodesSum = node + nodes_sum - removeNode
 
+                self.memorySum[index] = node + self.memorySum[index] - removeNode
                 queue.appendleft(node)
-            
-            self.memorySum[index] = newNodesSum
-            return newNodesSum / len(queue)
+
+            return newNodesSum // len(queue)
 
         return [total] + [ manageQueue(memory.available , self.memoryDeque[i]) for i in range(3) ]
 
