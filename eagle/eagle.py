@@ -18,8 +18,9 @@ class UtilizationNode:
         self.time = time
 
 class EagleNodeDaemon(Daemon):
-    def __init__(self, home, db, statfile , pidfile, stdout='/dev/null', stderr='/dev/null', stdin='/dev/null'):
+    def __init__(self, hostname, home, db, statfile , pidfile, stdout='/dev/null', stderr='/dev/null', stdin='/dev/null'):
         super().__init__(pidfile, stdout, stderr , stdin )
+        self.hostname = hostname
         self.home = home
         self.db = db
         self.statfile = statfile
@@ -31,11 +32,13 @@ class EagleNodeDaemon(Daemon):
 
     def run(self):
         while True:
-            print("time0: " + str( time.time() ) ) 
+            open(self.stdout, 'w').close()
+            open(self.stderr, 'w').close()
+
             cpuCount = psutil.cpu_count(logical=True)
             coreCount = psutil.cpu_count(logical=False)
             cpu_freq = psutil.cpu_freq()
-            cpuFreq = [cpu_freq.min,cpu_freq.current, cpu_freq.max]
+            cpuFreq = [int(cpu_freq.min),int(cpu_freq.current), int(cpu_freq.max)]
 
             nodeLoad = psutil.getloadavg()
             nodeUtilization = self.utilization()
@@ -53,12 +56,29 @@ class EagleNodeDaemon(Daemon):
                 'nodeMemory': nodeMemory,
                 'nodeusers' : users
             }
+
+            print(stats)
+
+            db_input = [hostname,cpuCount, coreCount] + cpuFreq + list(nodeLoad) + nodeBandwidth + nodeUtilization + nodeMemory + [users]
+
+            print(db_input)
+
+            conn = sqlite3.connect(self.db)
+            cur = conn.cursor()
+            node_sql = "INSERT OR REPLACE INTO node (node, cpucount , corecount, cpufreqmin, \
+             cpufreqcurrent, cpufreqmax, load_1, load_5, load_15,band_10, band_50, band_150, util_10, \
+             util_50, util_150, memory, memory_10, memory_50, memory_150,  nodeusers ) VALUES (?, ?, \
+             ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?)"
             
-            # print("time1: " + str( time.time() ) ) 
-            with open(self.statfile,'w+',encoding='utf-8') as f:
-                json.dump(stats, f, ensure_ascii=False, indent=4)
-            print("time2: " + str( time.time() ) + "\n" ) 
-            # time.sleep(1)
+            node_monitor_sql = "INSERT OR REPLACE INTO node_monitor (node, cpucount , corecount, cpufreqmin, \
+             cpufreqcurrent, cpufreqmax, load_1, load_5, load_15,band_10, band_50, band_150, util_10, \
+             util_50, util_150, memory, memory_10, memory_50, memory_150,  nodeusers ) VALUES (?, ?, \
+             ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?)"
+       
+            cur.execute(node_sql, db_input)
+            cur.execute(node_monitor_sql, db_input)
+            conn.commit()
+            conn.close()
 
 
     def bandwidth(self):
@@ -71,7 +91,7 @@ class EagleNodeDaemon(Daemon):
         # do calculation
         l = len(n_deque)
         if l < 30:
-            n_band =  [0,0,0]
+            n_band =  [0.0,0.0,0.0]
         elif l < 150:
             n_band = [ ( n_deque[0].rx - n_deque[4].rx ) / ( n_deque[0].time - n_deque[4].time ) , 
                         ( n_deque[0].rx - n_deque[l//3].rx ) / ( n_deque[0].time - n_deque[l//3].time ) ,
@@ -101,8 +121,7 @@ class EagleNodeDaemon(Daemon):
                 self.utilizationSum[index] = node + self.utilizationSum[index] - removeNode
                 queue.appendleft(node)
 
-            print( (self.utilizationSum[index] / len(queue),self.utilizationSum[index],  len(queue)) )    
-            return (self.utilizationSum[index] / len(queue),self.utilizationSum[index],  len(queue))
+            return self.utilizationSum[index] / len(queue)
 
         return [ manageQueue(utilization, i) for i in range(3) ]
 
@@ -151,16 +170,18 @@ if __name__ == "__main__":
     stderr = home + "/.eagle/" + hostname + "/eagle.err"
     statfile = home + "/.eagle/" + hostname + "/eagle.json"
     db = home + "/.eagle/" + hostname + "/data.db"
-    daemon = EagleNodeDaemon(home, db, statfile, pidfilename, stdout, stderr)
+    daemon = EagleNodeDaemon(hostname, home, db, statfile, pidfilename, stdout, stderr)
 
     if 'start' == sys.argv[1]:
         print("Node Daemon on " + hostname + " : Starting")
+        daemon.setupDB(db)
         daemon.start()
     elif 'stop' == sys.argv[1]:
         print("Node Daemon on " + hostname + " : Stop")
         daemon.stop()
     elif 'restart' == sys.argv[1]:
         print("Node Daemon on " + hostname + " : Restart")
+        daemon.setupDB(db)
         daemon.restart()
     else:
         print("Unknown command")

@@ -185,7 +185,86 @@ class Daemon:
 			cur.execute(bw_monitor_sql)
 		except:
 			print("BW M Table : UP, ", end = " ")
+
+		
+
+		node_sql = """
+		CREATE TABLE node (
+			node TEXT NOT NULL PRIMARY KEY,
+			cpucount INTEGER NOT NULL,
+			corecount INTEGER NOT NULL,
+
+			cpufreqmin INTEGER NOT NULL,
+			cpufreqcurrent INTEGER NOT NULL,
+			cpufreqmax INTEGER NOT NULL,
+
+			load_1 REAL NOT NULL,
+			load_5 REAL NOT NULL,
+			load_15 REAL NOT NULL,
+			
+			band_10 REAL NOT NULL,
+			band_50 REAL NOT NULL,
+			band_150 REAL NOT NULL,
+			
+			util_10 REAL NOT NULL,
+			util_50 REAL NOT NULL,
+			util_150 REAL NOT NULL,
+			
+			memory INTEGER NOT NULL,
+			memory_10 INTEGER NOT NULL,
+			memory_50 INTEGER NOT NULL,
+			memory_150 INTEGER NOT NULL,
+
+			nodeusers INTEGER NOT NULL,
+
+			time TIMESTAMP DEFAULT  (strftime('%s','now'))
+		)"""
+
+		try:
+			cur.execute(node_sql)
+		except:
+			print("NODE Table : UP, ", end = " ")
+
+
+		node_monitor_sql = """
+		CREATE TABLE node_monitor (
+			id INTEGER PRIMARY KEY,
+			node TEXT NOT NULL,
+			cpucount INTEGER NOT NULL,
+			corecount INTEGER NOT NULL,
+
+			cpufreqmin INTEGER NOT NULL,
+			cpufreqcurrent INTEGER NOT NULL,
+			cpufreqmax INTEGER NOT NULL,
+
+			load_1 REAL NOT NULL,
+			load_5 REAL NOT NULL,
+			load_15 REAL NOT NULL,
+			
+			band_10 REAL NOT NULL,
+			band_50 REAL NOT NULL,
+			band_150 REAL NOT NULL,
+			
+			util_10 REAL NOT NULL,
+			util_50 REAL NOT NULL,
+			util_150 REAL NOT NULL,
+			
+			memory INTEGER NOT NULL,
+			memory_10 INTEGER NOT NULL,
+			memory_50 INTEGER NOT NULL,
+			memory_150 INTEGER NOT NULL,
+
+			nodeusers INTEGER NOT NULL,
+			
+			time TIMESTAMP DEFAULT  (strftime('%s','now'))
+		)"""
+
+		try:
+			cur.execute(node_monitor_sql)
+		except:
+			print("Node M Table : UP, ", end = " ")
 		
 		print(" ::: DONE")
+
 
 		con.close()
