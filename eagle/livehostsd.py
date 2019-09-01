@@ -16,7 +16,7 @@ class EagleBandwidthDaemon(Daemon):
         while True:
             open(self.stdout, 'w').close()
             open(self.stderr, 'w').close()
-            subprocess.run([self.script], stdout=subprocess.PIPE)
+            subprocess.run([self.script, self.livehosts], stdout=subprocess.PIPE)
             time.sleep(600)
 
 if __name__ == "__main__":

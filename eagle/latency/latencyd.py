@@ -1,5 +1,6 @@
 import os, sys, time, subprocess, sqlite3, re
 from pathlib import Path
+sys.path.insert(1, '../')
 from daemon import Daemon
 
 
