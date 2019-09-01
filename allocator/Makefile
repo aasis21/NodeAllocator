@@ -1,6 +1,6 @@
 CXX = g++
-SRC := src/min_diameter.cpp
-BINS := minD
+SRC:=${wildcard */*.cpp}
+BINS:=${SRC:%.cpp=%.out}
 INCLUDE := include/
 SHARED := lib/libsqlite3.so
 
@@ -8,7 +8,7 @@ FLAGS := -I ${INCLUDE}
 
 all: ${BINS}
 
-minD:	src/min_diameter.cpp
+%.out:	%.cpp
 	$(CXX) $< -o $@ ${FLAGS} ${SHARED}
 
 clean: 
