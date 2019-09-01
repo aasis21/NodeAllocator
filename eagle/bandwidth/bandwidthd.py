@@ -1,6 +1,7 @@
 import os, sys, time, subprocess, sqlite3, re
 from pathlib import Path
-from daemon import Daemon
+sys.path.insert(1, '../')
+from eagle.daemon import Daemon
 
 
 class EagleBandwidthDaemon(Daemon):

@@ -33,8 +33,8 @@ int main (int argc, char *argv[])
     int rndtrps = ROUNDTRIPS;
     int tag = 99;
     char msgbuf[end];
-    for (int i=0; i<end; i++)
-        msgbuf[i] = 'x';
+    // for (int i=0; i<end; i++)
+    //     msgbuf[i] = 'x';
 
     MPI_Barrier(MPI_COMM_WORLD);
 
