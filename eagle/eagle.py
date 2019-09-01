@@ -54,10 +54,10 @@ class EagleNodeDaemon(Daemon):
                 'nodeusers' : users
             }
             
-            print("time1: " + str( time.time() ) ) 
+            # print("time1: " + str( time.time() ) ) 
             with open(self.statfile,'w+',encoding='utf-8') as f:
                 json.dump(stats, f, ensure_ascii=False, indent=4)
-            print("time2: " + str( time.time() ) ) 
+            print("time2: " + str( time.time() ) + "\n" ) 
             # time.sleep(1)
 
 
@@ -85,35 +85,6 @@ class EagleNodeDaemon(Daemon):
         
         return n_band
             
-    def utilizationByCategory(self):
-        utilization = psutil.cpu_times_percent()
-        node = UtilizationNode(utilization.user, utilization.system, utilization.idle, utilization.iowait, time.time() )
-
-        def manageQueue(node,queue):
-            if len(queue) == 0:
-                queue.appendleft(node)
-            else:
-                topNode = queue[0]
-                if len(queue) == queue.maxlen:
-                    removeNode = queue.pop()
-                else:
-                    removeNode = UtilizationNode(0,0,0,0,time.time())
-                    
-                newNode = UtilizationNode(
-                    node.user + topNode.user - removeNode.user,
-                    node.system + topNode.system - removeNode.system,
-                    node.idle + topNode.idle - removeNode.idle,
-                    node.iowait + topNode.iowait - removeNode.iowait,
-                    time.time()
-                )
-                queue.appendleft(newNode)
-            
-            topNode = queue[0]
-            l = len(queue)
-            return [topNode.user/l,topNode.system/l,topNode.idle/l,topNode.iowait/l]
-
-        return [ manageQueue(node, self.utilizationDeque[i]) for i in range(3) ]
-
     def utilization(self):
         utilization = psutil.cpu_percent()
 
@@ -121,18 +92,17 @@ class EagleNodeDaemon(Daemon):
             queue = self.utilizationDeque[index]
             if len(queue) == 0:
                 queue.appendleft(node)
-                newNodesSum = node
+                self.utilizationSum[index] = node
             else:
                 if len(queue) == queue.maxlen:
                     removeNode = queue.pop()
                 else:
                     removeNode = 0  
-                newNodesSum = node + nodes_sum - removeNode
-
+                self.utilizationSum[index] = node + self.utilizationSum[index] - removeNode
                 queue.appendleft(node)
-            
-            self.utilizationSum[index] = newNodesSum
-            return newNodesSum / len(queue)
+
+            print( (self.utilizationSum[index] / len(queue),self.utilizationSum[index],  len(queue)) )    
+            return (self.utilizationSum[index] / len(queue),self.utilizationSum[index],  len(queue))
 
         return [ manageQueue(utilization, i) for i in range(3) ]
 
@@ -144,20 +114,19 @@ class EagleNodeDaemon(Daemon):
             queue = self.memoryDeque[index]
             if len(queue) == 0:
                 queue.appendleft(node)
-                newNodesSum = node
+                self.memorySum[index] = node
             else:
                 if len(queue) == queue.maxlen:
                     removeNode = queue.pop()
                 else:
                     removeNode = 0  
-                newNodesSum = node + nodes_sum - removeNode
 
+                self.memorySum[index] = node + self.memorySum[index] - removeNode
                 queue.appendleft(node)
-            
-            self.memorySum[index] = newNodesSum
-            return newNodesSum / len(queue)
 
-        return [total] + [ manageQueue(memory.available , self.memoryDeque[i]) for i in range(3) ]
+            return self.memorySum[index] // len(queue)
+
+        return [total] + [ manageQueue(memory.available, i) for i in range(3) ]
 
 
 if __name__ == "__main__":
