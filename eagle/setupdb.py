@@ -1,17 +1,10 @@
-import os, sys, time, sqlite3
+import os, sys, time, sqlite3, subprocess
 from pathlib import Path
 
 
 if __name__ == "__main__":
-    try:
-        hostname = os.environ["HOSTNAME"]
-    except:
-        hostname = "localhost"
-        
-    if hostname == "":
-        hostname = "localhost"
-    else:
-        hostname = hostname.split('.')[0].strip()
+    output = subprocess.run(["hostname"], stdout=subprocess.PIPE)
+    hostname = output.stdout.decode("utf-8").strip(" \n")
 
     if len(sys.argv) == 2:
         hostname = sys.argv[2]
@@ -78,7 +71,83 @@ if __name__ == "__main__":
         cur.execute(bw_monitor_sql)
     except:
         print("BW monitor table exists.. ")
-    
+
+
+    node_sql = """
+    CREATE TABLE node (
+        node INTEGER NOT NULL PRIMARY KEY,
+        cpucount INTEGER NOT NULL,
+        corecount INTEGER NOT NULL,
+
+        cpufreqmin INTEGER NOT NULL,
+        cpufreqcurrent INTEGER NOT NULL,
+        cpufreqmax INTEGER NOT NULL,
+
+        load_1 REAL NOT NULL,
+        load_5 REAL NOT NULL,
+        load_15 REAL NOT NULL,
+        
+        band_10 REAL NOT NULL,
+        band_50 REAL NOT NULL,
+        band_150 REAL NOT NULL,
+        
+        util_10 REAL NOT NULL,
+        util_50 REAL NOT NULL,
+        util_150 REAL NOT NULL,
+        
+        memory INTEGER NOT NULL,
+        memory_10 INTEGER NOT NULL,
+        memory_50 INTEGER NOT NULL,
+        memory_150 INTEGER NOT NULL,
+
+        nodeusers INTEGER NOT NULL,
+
+        time TIMESTAMP DEFAULT  (strftime('%s','now'))
+    )"""
+
+    try:
+        cur.execute(node_sql)
+    except:
+        print("Node table exists.. ")
+
+    node_monitor_sql = """
+    CREATE TABLE node_monitor (
+        id INTEGER PRIMARY KEY,
+        node INTEGER NOT NULL,
+        cpucount INTEGER NOT NULL,
+        corecount INTEGER NOT NULL,
+
+        cpufreqmin INTEGER NOT NULL,
+        cpufreqcurrent INTEGER NOT NULL,
+        cpufreqmax INTEGER NOT NULL,
+
+        load_1 REAL NOT NULL,
+        load_5 REAL NOT NULL,
+        load_15 REAL NOT NULL,
+        
+        band_10 REAL NOT NULL,
+        band_50 REAL NOT NULL,
+        band_150 REAL NOT NULL,
+        
+        util_10 REAL NOT NULL,
+        util_50 REAL NOT NULL,
+        util_150 REAL NOT NULL,
+        
+        memory INTEGER NOT NULL,
+        memory_10 INTEGER NOT NULL,
+        memory_50 INTEGER NOT NULL,
+        memory_150 INTEGER NOT NULL,
+
+        nodeusers INTEGER NOT NULL,
+        
+        time TIMESTAMP DEFAULT  (strftime('%s','now'))
+    )"""
+
+    try:
+        cur.execute(node_monitor_sql)
+    except:
+        print("Node  monitor table exists.. ")
+
     cur.execute("SELECT name FROM sqlite_master WHERE type='table'")
     print(cur.fetchall())
 
@@ -100,3 +169,16 @@ if __name__ == "__main__":
 
     # for row in cur.execute('SELECT * FROM bw_monitor ORDER BY hostA'):
     #     print(row)
+
+    # util_10_usr REAL NOT NULL,
+    # util_10_sys REAL NOT NULL,
+    # util_10_idle REAL NOT NULL,
+    # util_10__io REAL NOT NULL,
+    # util_50_usr REAL NOT NULL,
+    # util_50_sys REAL NOT NULL,
+    # util_50_idle REAL NOT NULL,
+    # util_50__io REAL NOT NULL,
+    # util_150_usr REAL NOT NULL,
+    # util_150_sys REAL NOT NULL,
+    # util_150_idle REAL NOT NULL,
+    # util_150__io REAL NOT NULL,

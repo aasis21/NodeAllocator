@@ -1,8 +1,4 @@
-import os
-import sys
-import time
-import psutil
-import json
+import os, sys, time, subprocess, psutil, json, sqlite3, re
 from pathlib import Path
 from daemon import Daemon
 from collections import deque
@@ -13,20 +9,57 @@ class NetworkNode:
         self.tx = tx
         self.time = time
 
-class EagleDaemon(Daemon):
-    def __init__(self, statfile , pidfile, stdout='/dev/null', stderr='/dev/null', stdin='/dev/null'):
+class UtilizationNode:
+    def __init__(self, user, system, idle, iowait, time):
+        self.user = user
+        self.system = system
+        self.idle = idle
+        self.iowait =iowait
+        self.time = time
+
+class EagleNodeDaemon(Daemon):
+    def __init__(self, home, db, statfile , pidfile, stdout='/dev/null', stderr='/dev/null', stdin='/dev/null'):
         super().__init__(pidfile, stdout, stderr , stdin )
-        self.networkDeque =  deque(maxlen = 150)
+        self.home = home
+        self.db = db
         self.statfile = statfile
+        self.networkDeque =  deque(maxlen = 150)
+        self.utilizationDeque =  [ deque(maxlen = 10), deque(maxlen = 50), deque(maxlen = 150)]
+        self.utilizationSum = [0.0,0.0,0.0]
+        self.memorySum = [0.0, 0.0, 0.0]
+        self.memoryDeque =  [ deque(maxlen = 10), deque(maxlen = 50), deque(maxlen = 150)]
 
     def run(self):
         while True:
-            stats = {}
-            stats["bandwidth"] = self.bandwidth()
-            stats["cpuStat"] = self.getCpuStats()
+            print("time0: " + str( time.time() ) ) 
+            cpuCount = psutil.cpu_count(logical=True)
+            coreCount = psutil.cpu_count(logical=False)
+            cpu_freq = psutil.cpu_freq()
+            cpuFreq = [cpu_freq.min,cpu_freq.current, cpu_freq.max]
+
+            nodeLoad = psutil.getloadavg()
+            nodeUtilization = self.utilization()
+            nodeBandwidth = self.bandwidth()
+            nodeMemory = self.memory()
+            users = len(psutil.users())
+
+            stats = {
+                'cpucount': cpuCount,
+                'corecount':coreCount,
+                'cpufreq': cpuFreq,
+                'nodeload': nodeLoad,
+                'nodeutilization': nodeUtilization,
+                'nodebandwidth' : nodeBandwidth,
+                'nodeMemory': nodeMemory,
+                'nodeusers' : users
+            }
+            
+            print("time1: " + str( time.time() ) ) 
             with open(self.statfile,'w+',encoding='utf-8') as f:
                 json.dump(stats, f, ensure_ascii=False, indent=4)
-            time.sleep(2)
+            print("time2: " + str( time.time() ) ) 
+            # time.sleep(1)
+
 
     def bandwidth(self):
         # push to deque
@@ -52,25 +85,79 @@ class EagleDaemon(Daemon):
         
         return n_band
             
+    def utilizationByCategory(self):
+        utilization = psutil.cpu_times_percent()
+        node = UtilizationNode(utilization.user, utilization.system, utilization.idle, utilization.iowait, time.time() )
 
-    def getCpuStats(self):
-        cpuStats = {}
-        cpuTimes = psutil.cpu_times()
-        cpuStats["cpuTimes"] = { 
-            "user" : cpuTimes.user,
-            "sys" : cpuTimes.system,
-            "idle" : cpuTimes.idle,
-            "iowait" : cpuTimes.iowait
-        }
-        
-        cpuStats["cpuCount"] = psutil.cpu_count()
-        cpuStats["coreCount"] = psutil.cpu_count(logical=False)
-        
-        cpufreq = psutil.cpu_freq()
-        cpuStats["cpufreq"] = {"cur" : cpufreq.current, "min" : cpufreq.min, "max" :cpufreq.max , "avg" : 0 }
-        cpuStats["cpuload"] = psutil.getloadavg()
+        def manageQueue(node,queue):
+            if len(queue) == 0:
+                queue.appendleft(node)
+            else:
+                topNode = queue[0]
+                if len(queue) == queue.maxlen:
+                    removeNode = queue.pop()
+                else:
+                    removeNode = UtilizationNode(0,0,0,0,time.time())
+                    
+                newNode = UtilizationNode(
+                    node.user + topNode.user - removeNode.user,
+                    node.system + topNode.system - removeNode.system,
+                    node.idle + topNode.idle - removeNode.idle,
+                    node.iowait + topNode.iowait - removeNode.iowait,
+                    time.time()
+                )
+                queue.appendleft(newNode)
+            
+            topNode = queue[0]
+            l = len(queue)
+            return [topNode.user/l,topNode.system/l,topNode.idle/l,topNode.iowait/l]
 
-        return cpuStats
+        return [ manageQueue(node, self.utilizationDeque[i]) for i in range(3) ]
+
+    def utilization(self):
+        utilization = psutil.cpu_percent()
+
+        def manageQueue(node, index):
+            queue = self.utilizationDeque[index]
+            if len(queue) == 0:
+                queue.appendleft(node)
+                newNodesSum = node
+            else:
+                if len(queue) == queue.maxlen:
+                    removeNode = queue.pop()
+                else:
+                    removeNode = 0  
+                newNodesSum = node + nodes_sum - removeNode
+
+                queue.appendleft(node)
+            
+            self.utilizationSum[index] = newNodesSum
+            return newNodesSum / len(queue)
+
+        return [ manageQueue(utilization, i) for i in range(3) ]
+
+    def memory(self):
+        memory = psutil.virtual_memory()
+        total = memory.total
+
+        def manageQueue(node, index):
+            queue = self.memoryDeque[index]
+            if len(queue) == 0:
+                queue.appendleft(node)
+                newNodesSum = node
+            else:
+                if len(queue) == queue.maxlen:
+                    removeNode = queue.pop()
+                else:
+                    removeNode = 0  
+                newNodesSum = node + nodes_sum - removeNode
+
+                queue.appendleft(node)
+            
+            self.memorySum[index] = newNodesSum
+            return newNodesSum / len(queue)
+
+        return [total] + [ manageQueue(memory.available , self.memoryDeque[i]) for i in range(3) ]
 
 
 if __name__ == "__main__":
@@ -94,19 +181,21 @@ if __name__ == "__main__":
     stdout = home + "/.eagle/" + hostname + "/eagle.log"
     stderr = home + "/.eagle/" + hostname + "/eagle.err"
     statfile = home + "/.eagle/" + hostname + "/eagle.json"
-    daemon = EagleDaemon(statfile, pidfilename, stdout, stderr)
+    db = home + "/.eagle/" + hostname + "/data.db"
+    daemon = EagleNodeDaemon(home, db, statfile, pidfilename, stdout, stderr)
 
     if 'start' == sys.argv[1]:
-        print("bw Daemon on " + hostname + " : Starting")
+        print("Node Daemon on " + hostname + " : Starting")
         daemon.start()
     elif 'stop' == sys.argv[1]:
-        print("bw Daemon on " + hostname + " : Stop")
+        print("Node Daemon on " + hostname + " : Stop")
         daemon.stop()
     elif 'restart' == sys.argv[1]:
-        print("bw Daemon on " + hostname + " : Restart")
+        print("Node Daemon on " + hostname + " : Restart")
         daemon.restart()
     else:
         print("Unknown command")
         sys.exit(2)
-        sys.exit(0)
+    
+    sys.exit(0)
 
