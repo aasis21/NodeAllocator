@@ -1,7 +1,8 @@
 import os, sys, time, subprocess, sqlite3, re
 from pathlib import Path
-sys.path.insert(1, '../')
-from eagle.daemon import Daemon
+home = str(Path.home())
+sys.path.insert(1, home+ '/UGP/eagle')
+from daemon import Daemon
 
 
 class EagleBandwidthDaemon(Daemon):
