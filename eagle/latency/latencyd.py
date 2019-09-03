@@ -6,7 +6,7 @@ from daemon import Daemon
 
 
 class EagleLatencyDaemon(Daemon):
-    def __init__(self, home, db , livehosts, script, binary,hostname, pidfile, stdout='/dev/null', stderr='/dev/null', stdin='/dev/null'):
+    def __init__(self, home, db , livehosts, script, binary,hostname, latency, pidfile, stdout='/dev/null', stderr='/dev/null', stdin='/dev/null'):
         super().__init__(pidfile, stdout, stderr , stdin )
         self.home = home
         self.db = db
@@ -14,24 +14,38 @@ class EagleLatencyDaemon(Daemon):
         self.script = script
         self.binary = binary
         self.hostname = hostname
+        self.latency = latency
 
     def run(self):
         while True:
-            open(self.stdout, 'w').close()
-            open(self.stderr, 'w').close()
-            output = subprocess.run([self.script, self.hostname, self.binary, self.livehosts ], stdout=subprocess.PIPE)
-            print(output.stdout)
+            # open(self.stdout, 'w').close()
+            # open(self.stderr, 'w').close()
+            t0 = time.time()
+            output = subprocess.run([self.script, self.hostname, self.binary, self.livehosts, self.latency ], stdout=subprocess.PIPE)
+            t1 = time.time()
+            print(t1-t0)
             latencys = output.stdout.decode("utf-8").strip(" \n" ).split('\n')
-            db_input = [self.parse_latency(i) for i in latencys]
-            conn = sqlite3.connect(self.db)
-            cur = conn.cursor()
-            latency_sql = "INSERT OR REPLACE INTO latency (hostA, hostB, latency) VALUES (?, ?, ?)"
-            latency_monitor_sql = "INSERT OR REPLACE INTO latency_monitor (hostA, hostB, latency) VALUES (?, ?, ?)"
-            cur.executemany(latency_sql, db_input)
-            # cur.executemany(latency_monitor_sql, db_input)
-            conn.commit()
-            conn.close()
+            db_input = [self.parse_latency(i) for i in latencys if i != ""]
 
+            print(output.stdout)
+            t0 = time.time()
+            while True:
+                try:
+                    
+                    conn = sqlite3.connect(self.db)
+                    cur = conn.cursor()
+                    latency_sql = "INSERT OR REPLACE INTO latency (hostA, hostB, latency) VALUES (?, ?, ?)"
+                    latency_monitor_sql = "INSERT OR REPLACE INTO latency_monitor (hostA, hostB, latency) VALUES (?, ?, ?)"
+                    cur.executemany(latency_sql, db_input)
+                    # cur.executemany(latency_monitor_sql, db_input)
+                    conn.commit()
+                    conn.close()
+                    break
+                except:
+                    time.sleep(0.2)
+            t1 = time.time()
+            print(t1-t0)
+            print("\n")
             time.sleep(30)
 
     def parse_latency(self,latency):
@@ -67,12 +81,13 @@ if __name__ == "__main__":
     pidfilename = home + "/.eagle/" + hostname + "/latencyd.pid"
     stdout = home + "/.eagle/" + hostname + "/latencyd.log"
     stderr = home + "/.eagle/" + hostname + "/latencyd.err"
+    latency = home + "/.eagle/" + hostname + "/latency.txt"
     db = home + "/.eagle/" + hostname + "/data.db"
     livehosts = home + "/.eagle/livehosts.txt"
     script= home + "/UGP/eagle/latency/latency.sh"
     binary = home + "/UGP/eagle/latency/latency.out"
 
-    daemon = EagleLatencyDaemon(home, db, livehosts, script, binary, hostname, pidfilename, stdout, stderr)
+    daemon = EagleLatencyDaemon(home, db, livehosts, script, binary, hostname,latency, pidfilename, stdout, stderr)
     
     if 'start' == sys.argv[1]:
         print("latency Daemon on " + hostname + " : Starting")

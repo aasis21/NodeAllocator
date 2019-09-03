@@ -6,7 +6,7 @@ from daemon import Daemon
 
 
 class EagleBandwidthDaemon(Daemon):
-    def __init__(self, home, db , livehosts, script, binary,hostname, pidfile, stdout='/dev/null', stderr='/dev/null', stdin='/dev/null'):
+    def __init__(self, home, db , livehosts, script, binary,hostname,bw, pidfile, stdout='/dev/null', stderr='/dev/null', stdin='/dev/null'):
         super().__init__(pidfile, stdout, stderr , stdin )
         self.home = home
         self.db = db
@@ -14,25 +14,31 @@ class EagleBandwidthDaemon(Daemon):
         self.script = script
         self.binary = binary
         self.hostname = hostname
+        self.bw = bw
 
     def run(self):
         while True:
             open(self.stdout, 'w').close()
             open(self.stderr, 'w').close()
-            output = subprocess.run([self.script,self.hostname, self.binary, self.livehosts ], stdout=subprocess.PIPE);
+            output = subprocess.run([self.script,self.hostname, self.binary, self.livehosts,self.bw ], stdout=subprocess.PIPE);
             bandwidths = output.stdout.decode("utf-8").strip(" \n" ).split('\n')
-            db_input = [self.parse_bw(i) for i in bandwidths]
+            db_input = [self.parse_bw(i) for i in bandwidths if i != ""]
             # print(latencies)
-            conn = sqlite3.connect(self.db)
-            cur = conn.cursor()
-            bw_sql = "INSERT OR REPLACE INTO bw (hostA, hostB, bw) VALUES (?, ?, ?)"
-            bw_monitor_sql = "INSERT OR REPLACE INTO bw_monitor (hostA, hostB, bw) VALUES (?, ?, ?)"
-            cur.executemany(bw_sql, db_input)
-            # cur.executemany(bw_monitor_sql, db_input)
-            conn.commit()
-            conn.close()
-
-            time.sleep(30)
+            while True:
+                try:
+                    conn = sqlite3.connect(self.db)
+                    cur = conn.cursor()
+                    bw_sql = "INSERT OR REPLACE INTO bw (hostA, hostB, bw) VALUES (?, ?, ?)"
+                    bw_monitor_sql = "INSERT OR REPLACE INTO bw_monitor (hostA, hostB, bw) VALUES (?, ?, ?)"
+                    cur.executemany(bw_sql, db_input)
+                    # cur.executemany(bw_monitor_sql, db_input)
+                    conn.commit()
+                    conn.close()
+                    break
+                except:
+                    time.sleep(0.2)
+                
+            time.sleep(180)
 
     def parse_bw(self,bw):
         bw = bw.split(" ")
@@ -67,12 +73,13 @@ if __name__ == "__main__":
     pidfilename = home + "/.eagle/" + hostname + "/bwd.pid"
     stdout = home + "/.eagle/" + hostname + "/bwd.log"
     stderr = home + "/.eagle/" + hostname + "/bwd.err"
+    bw = home + "/.eagle/" + hostname + "/bw.txt"
     db = home + "/.eagle/" + hostname + "/data.db"
     livehosts = home + "/.eagle/livehosts.txt"
     script= home + "/UGP/eagle/bandwidth/bandwidth.sh"
     binary = home + "/UGP/eagle/bandwidth/bandwidth.out"
 
-    daemon = EagleBandwidthDaemon(home, db, livehosts, script, binary, hostname, pidfilename, stdout, stderr)
+    daemon = EagleBandwidthDaemon(home, db, livehosts, script, binary, hostname, bw, pidfilename, stdout, stderr)
 
     if 'start' == sys.argv[1]:
         print("bw Daemon on " + hostname + " : Starting")
