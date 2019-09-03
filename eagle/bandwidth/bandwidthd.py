@@ -28,7 +28,7 @@ class EagleBandwidthDaemon(Daemon):
             bw_sql = "INSERT OR REPLACE INTO bw (hostA, hostB, bw) VALUES (?, ?, ?)"
             bw_monitor_sql = "INSERT OR REPLACE INTO bw_monitor (hostA, hostB, bw) VALUES (?, ?, ?)"
             cur.executemany(bw_sql, db_input)
-            cur.executemany(bw_monitor_sql, db_input)
+            # cur.executemany(bw_monitor_sql, db_input)
             conn.commit()
             conn.close()
 

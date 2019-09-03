@@ -28,7 +28,7 @@ class EagleLatencyDaemon(Daemon):
             latency_sql = "INSERT OR REPLACE INTO latency (hostA, hostB, latency) VALUES (?, ?, ?)"
             latency_monitor_sql = "INSERT OR REPLACE INTO latency_monitor (hostA, hostB, latency) VALUES (?, ?, ?)"
             cur.executemany(latency_sql, db_input)
-            cur.executemany(latency_monitor_sql, db_input)
+            # cur.executemany(latency_monitor_sql, db_input)
             conn.commit()
             conn.close()
 

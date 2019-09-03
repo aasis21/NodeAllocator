@@ -76,7 +76,7 @@ class EagleNodeDaemon(Daemon):
              ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?)"
        
             cur.execute(node_sql, db_input)
-            cur.execute(node_monitor_sql, db_input)
+            # cur.execute(node_monitor_sql, db_input)
             conn.commit()
             conn.close()
 
