@@ -1,4 +1,4 @@
-import os, sys, time, subprocess, sqlite3, re
+import os, sys, time, subprocess, sqlite3, re, shutil
 from pathlib import Path
 home = str(Path.home())
 sys.path.insert(1, home+ '/UGP/eagle')
@@ -15,6 +15,7 @@ class EagleLatencyDaemon(Daemon):
         self.binary = binary
         self.hostname = hostname
         self.latency = latency
+        self.old_latency = {}
 
     def run(self):
         while True:
@@ -27,7 +28,22 @@ class EagleLatencyDaemon(Daemon):
             latencys = output.stdout.decode("utf-8").strip(" \n" ).split('\n')
             db_input = [self.parse_latency(i) for i in latencys if i != ""]
 
-            print(output.stdout)
+            for i in range(len(db_input)):
+                if db_input[i][1] in self.old_latency:
+                    old_latency = self.old_latency[db_input[i][1]]
+                else:
+                    old_latency = 0
+                db_input[i][2] = 0.85 * old_latency + 0.15 * db_input[i][2]
+                self.old_latency[db_input[i][1]] = db_input[i][2]
+
+            dump_string = ""
+            for each in db_input:
+                dump_string = dump_string + " ".join(str(i) for i in each) + "\n"
+            with open(self.latency + ".tmp", 'w') as out:
+                out.write(dump_string)
+
+            shutil.move(self.latency + ".tmp", self.latency)
+
             t0 = time.time()
             while True:
                 try:
@@ -46,6 +62,7 @@ class EagleLatencyDaemon(Daemon):
             t1 = time.time()
             print(t1-t0)
             print("\n")
+
             time.sleep(30)
 
     def parse_latency(self,latency):
@@ -54,11 +71,7 @@ class EagleLatencyDaemon(Daemon):
         latency[0] = int( re.findall('\d+', latency[0])[-1] )
         latency[1] = int( re.findall('\d+', latency[1])[-1] )
         latency[2] = int( latency[2])
-
-        if latency[0] > latency[1]:
-            return ( latency[1] , latency[0], latency[2] )
-        else:
-            return ( latency[0] , latency[1], latency[2] )
+        return ( latency[0] , latency[1], latency[2] )
 
 
 if __name__ == "__main__":

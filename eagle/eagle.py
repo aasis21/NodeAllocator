@@ -1,4 +1,4 @@
-import os, sys, time, subprocess, psutil, json, sqlite3, re
+import os, sys, time, subprocess, psutil, json, sqlite3, re, shutil
 from pathlib import Path
 from daemon import Daemon
 from collections import deque
@@ -63,8 +63,11 @@ class EagleNodeDaemon(Daemon):
 
             start = time.time()
             db_string = ' '.join([str(elem) for elem in db_input]) 
-            with open(self.statfile, 'w') as out:
+            with open(self.statfile + ".tmp", 'w') as out:
                 out.write(db_string)
+
+            shutil.move(self.statfile + ".tmp", self.statfile)
+
             end = time.time()
             print("fdgj" + str(end-start) + "\n")
 

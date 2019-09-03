@@ -510,7 +510,7 @@ int main(int argc, char **argv){
 	for(int i=0;i<NUM_HOSTS;i++){
 		vector<long double> tmp;
 		for(int j=0;j<NUM_HOSTS;j++){
-			tmp.push_back(1000000);
+			tmp.push_back(3000);
 		}
 		latency.push_back(tmp);
 	}

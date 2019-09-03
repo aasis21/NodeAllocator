@@ -13,15 +13,14 @@ for i in "${hosts[@]}"
 do
     printf "$me $i " 
     latencystring=$latencystring"$me $i " 
-    out=$( timeout 3 mpiexec -hosts $me,$i -n 2 $binary 2> /dev/null )
+    out=$( timeout 5 mpiexec -hosts $me,$i -n 2 $binary 2> /dev/null )
     status=$?
     if [ $status != '0' ]
     then
-        latencystring=$latencystring"1000000"$'\n' 
+        latencystring=$latencystring"3000"$'\n' 
         echo 1000000
     else
         latencystring=$latencystring"$out"$'\n' 
         echo $out
     fi
 done
-echo "$latencystring" > $latency
