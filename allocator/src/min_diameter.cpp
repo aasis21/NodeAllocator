@@ -178,9 +178,7 @@ int read_nodedata(string hostname, FILE* logfile){
 			string field[20] = {"node", "cpucount" , "corecount", "cpufreqmin" , 
 				"cpufreqcurrent" , "cpufreqmax" , "load_1", "load_5", "load_15","band_10", "band_50", "band_150", "util_10", 
 				"util_50", "util_150", "memory", "memory_10", "memory_50", "memory_150",  "nodeusers"};
-							
 			allData["node"].push_back( stoi(token[0].substr(5,token[0].length())));
-			
 			for(int i=1;i<20;i++){
 				allData[field[i]].push_back( stold(token[i]) );
 			}
@@ -209,8 +207,8 @@ void read_latency(string hostname, FILE* logfile){
 			for(string s; iss >> s; )
     			token.push_back(s);
 			if(token.size() == 3){
-				int u = stoi(token[0].substr( 5,token[0].length() ) );
-				int v = stoi(token[1].substr( 5,token[1].length() ) );
+				int u = stoi(token[0]);
+				int v = stoi(token[1]);
 				int l = stold(token[2]);
 
 				int uidx = find(allData["node"].begin(), allData["node"].end(), u) - allData["node"].begin();
@@ -299,7 +297,7 @@ void compute_power(long double comp_power[], map<string, long double> weights){
 			cout<<comp_power[idx]<<" ";
 		cout<<endl;
 	}
-	transform(comp_power,comp_power+NUM_HOSTS , comp_power, bind2nd(divides<long double>(), accumulate(comp_power, comp_power+NUM_HOSTS, 0)));
+	transform(comp_power,comp_power+NUM_HOSTS , comp_power, bind2nd(divides<long double>(), accumulate(comp_power, comp_power+NUM_HOSTS, 0.0)));
 	
 	if(DEBUG)
 	{
@@ -312,24 +310,24 @@ void compute_power(long double comp_power[], map<string, long double> weights){
 
 void set_weights(map<string, long double> &weights){
 
-	weights.insert({"cpucount", 2});
-	weights.insert({"cpufreqmax", 2});
-	weights.insert({"corecount", 2});
+	// weights.insert({"cpucount", 2});
+	// weights.insert({"cpufreqmax", 2});
+	// weights.insert({"corecount", 2});
 
-	weights.insert({"load_1", -2});
-	weights.insert({"load_5", -2});
-	weights.insert({"load_15", -2});
+	weights.insert({"load_1", -4});
+	weights.insert({"load_5", -4});
+	// weights.insert({"load_15", -4});
 
-	weights.insert({"band_10", -8});
-	weights.insert({"band_50", -7});
-	weights.insert({"band_150", -6});
+	// weights.insert({"band_10", -8});
+	// weights.insert({"band_50", -7});
+	// weights.insert({"band_150", -6});
 
-	weights.insert({"util_10", -2});
-	weights.insert({"util_50", -2});
+	weights.insert({"util_10", -4});
+	// weights.insert({"util_50", -4});
 
-	weights.insert({"memory", 2});
-	weights.insert({"memory_50", 2});
-	weights.insert({"nodeusers",-7});
+	// // weights.insert({"memory", 2});
+	weights.insert({"memory_10", 2});
+	weights.insert({"nodeusers",-1});
 }
 
 // int Diameter(vector<int> V, vector<vector<long double> > l){
@@ -425,7 +423,7 @@ vector<int> FindBestStar(vector<int> G, vector<int> counts, int n, long double c
 	vector<int> G_;
 	long double comp[NUM_HOSTS] = {0};
 	long double netw[NUM_HOSTS] = {0};
-	long double latency[NUM_HOSTS] = {1000000};
+	long double latency[NUM_HOSTS] = {3000};
 	long double total_power[NUM_HOSTS] = {0};
 
 	// Calculate compute and network power
@@ -462,7 +460,7 @@ vector<int> FindBestStar(vector<int> G, vector<int> counts, int n, long double c
 	if(DEBUG==1){
 		cout<<"Computation, Network and Total power for each node star:\n"<<endl;
 		for(int i=0;i<NUM_HOSTS;i++){
-			cout<<allData["node"][i]<<" "<<comp[i]<<" "<<netw[i]<<" "<<total_power[i]<<endl;
+			cout<<allData["node"][i]<<" || "<<comp[i]<<" || "<<netw[i]<<" || "<<total_power[i]<<endl;
 		}
 		cout<<"Max:"<<max_pow<<" "<<allData["node"][max_idx]<<endl;
 	}
@@ -573,15 +571,19 @@ int main(int argc, char **argv){
 				cout<<latency[i][j]<<" ";
 			cout<<endl;
 		}
-		// cout << "Node Data :\n";
-		// for(int i=0;i<NUM_HOSTS;i++){
-		// 	map<string, vector< long double> >::iterator it;
-		// 	for(it=allData.begin();it!=allData.end();it++){
-		// 		string key = it->first;
-		// 		cout << key << ":" << allData[key][i] << " ";
-		// 	}
-		// 	cout << endl;
-		// }
+		cout << "Node Data :\n";
+		
+		map<string, vector< long double> >::iterator it;
+		for(it=allData.begin();it!=allData.end();it++){
+			string key = it->first;
+			cout << key << " ";
+			for(int i=0;i<NUM_HOSTS;i++){
+				cout << ":" << allData[key][i] << " ";
+			}
+			cout << endl;
+		}
+		cout << endl;
+		
 	}
 
 	//Find Proccess count to be allocated on each node

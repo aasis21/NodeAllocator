@@ -1,4 +1,4 @@
-import os, sys, time, subprocess, sqlite3, re
+import os, sys, time, subprocess, sqlite3, re, shutil
 from pathlib import Path
 home = str(Path.home())
 sys.path.insert(1, home+ '/UGP/eagle')
@@ -18,25 +18,30 @@ class EagleBandwidthDaemon(Daemon):
 
     def run(self):
         while True:
-            open(self.stdout, 'w').close()
-            open(self.stderr, 'w').close()
+            # open(self.stdout, 'w').close()
+            # open(self.stderr, 'w').close()
             output = subprocess.run([self.script,self.hostname, self.binary, self.livehosts,self.bw ], stdout=subprocess.PIPE);
             bandwidths = output.stdout.decode("utf-8").strip(" \n" ).split('\n')
             db_input = [self.parse_bw(i) for i in bandwidths if i != ""]
-            # print(latencies)
-            while True:
-                try:
-                    conn = sqlite3.connect(self.db)
-                    cur = conn.cursor()
-                    bw_sql = "INSERT OR REPLACE INTO bw (hostA, hostB, bw) VALUES (?, ?, ?)"
-                    bw_monitor_sql = "INSERT OR REPLACE INTO bw_monitor (hostA, hostB, bw) VALUES (?, ?, ?)"
-                    cur.executemany(bw_sql, db_input)
-                    # cur.executemany(bw_monitor_sql, db_input)
-                    conn.commit()
-                    conn.close()
-                    break
-                except:
-                    time.sleep(0.2)
+
+            dump_string = ""
+            for each in db_input:
+                dump_string = dump_string + " ".join(str(i) for i in each) + "\n"
+            with open(self.bw + ".tmp", 'w') as out:
+                out.write(dump_string)
+            shutil.move(self.bw + ".tmp", self.bw)
+
+            try:
+                conn = sqlite3.connect(self.db)
+                cur = conn.cursor()
+                bw_sql = "INSERT OR REPLACE INTO bw (hostA, hostB, bw) VALUES (?, ?, ?)"
+                bw_monitor_sql = "INSERT OR REPLACE INTO bw_monitor (hostA, hostB, bw) VALUES (?, ?, ?)"
+                cur.executemany(bw_sql, db_input)
+                cur.executemany(bw_monitor_sql, db_input)
+                conn.commit()
+                conn.close()
+            except:
+                time.sleep(0.2)
                 
             time.sleep(180)
 

@@ -24,4 +24,3 @@ do
         echo $out
     fi
 done
-echo "$bwstring" > $bw

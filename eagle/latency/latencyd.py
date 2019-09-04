@@ -21,10 +21,7 @@ class EagleLatencyDaemon(Daemon):
         while True:
             # open(self.stdout, 'w').close()
             # open(self.stderr, 'w').close()
-            t0 = time.time()
             output = subprocess.run([self.script, self.hostname, self.binary, self.livehosts, self.latency ], stdout=subprocess.PIPE)
-            t1 = time.time()
-            print(t1-t0)
             latencys = output.stdout.decode("utf-8").strip(" \n" ).split('\n')
             db_input = [self.parse_latency(i) for i in latencys if i != ""]
 
@@ -41,27 +38,20 @@ class EagleLatencyDaemon(Daemon):
                 dump_string = dump_string + " ".join(str(i) for i in each) + "\n"
             with open(self.latency + ".tmp", 'w') as out:
                 out.write(dump_string)
-
             shutil.move(self.latency + ".tmp", self.latency)
 
-            t0 = time.time()
-            while True:
-                try:
-                    
-                    conn = sqlite3.connect(self.db)
-                    cur = conn.cursor()
-                    latency_sql = "INSERT OR REPLACE INTO latency (hostA, hostB, latency) VALUES (?, ?, ?)"
-                    latency_monitor_sql = "INSERT OR REPLACE INTO latency_monitor (hostA, hostB, latency) VALUES (?, ?, ?)"
-                    cur.executemany(latency_sql, db_input)
-                    # cur.executemany(latency_monitor_sql, db_input)
-                    conn.commit()
-                    conn.close()
-                    break
-                except:
-                    time.sleep(0.2)
-            t1 = time.time()
-            print(t1-t0)
-            print("\n")
+            try:
+                conn = sqlite3.connect(self.db)
+                cur = conn.cursor()
+                latency_sql = "INSERT OR REPLACE INTO latency (hostA, hostB, latency) VALUES (?, ?, ?)"
+                latency_monitor_sql = "INSERT OR REPLACE INTO latency_monitor (hostA, hostB, latency) VALUES (?, ?, ?)"
+                cur.executemany(latency_sql, db_input)
+                cur.executemany(latency_monitor_sql, db_input)
+                conn.commit()
+                conn.close()
+            except:
+                time.sleep(0.2)
+
 
             time.sleep(30)
 

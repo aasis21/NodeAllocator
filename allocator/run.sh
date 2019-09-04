@@ -1,7 +1,7 @@
 #!/bin/bash
 proc_count=$1
-binary=$2
-ppn=$3
+binary=$3
+ppn=$2
 ./src/min_diameter.out $proc_count $ppn
 echo ""
 echo "Selected hosts are"
