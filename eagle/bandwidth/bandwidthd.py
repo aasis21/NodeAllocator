@@ -52,10 +52,8 @@ class EagleBandwidthDaemon(Daemon):
         bw[1] = int( re.findall('\d+', bw[1])[-1] )
         bw[2] = int( bw[2])
 
-        if bw[0] > bw[1]:
-            return ( bw[1] , bw[0], bw[2] )
-        else:
-            return ( bw[0] , bw[1], bw[2] )
+        return [ bw[1] , bw[0], bw[2] ]
+
 
 
 if __name__ == "__main__":

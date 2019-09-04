@@ -1,14 +1,14 @@
 #!/bin/bash
-eagle="$HOME/.eagle/$HOSTNAME/eagle.pid"
+eagle="$HOME/.eagle/$HOSTNAME/nodeinfo.pid"
 latency="$HOME/.eagle/$HOSTNAME/latencyd.pid"
 bw="$HOME/.eagle/$HOSTNAME/bwd.pid"
 livehosts="$HOME/.eagle/$HOSTNAME/livehosts.pid"
 
 printf "$HOSTNAME  ::: "
 if [ -f $eagle ]; then
-   printf "eagled : up "
+   printf "nodeInfod : up "
 else
-   printf "eagled : down "
+   printf "nodeInfod : down "
 fi
 
 printf " :: "

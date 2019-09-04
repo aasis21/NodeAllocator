@@ -61,7 +61,7 @@ class EagleLatencyDaemon(Daemon):
         latency[0] = int( re.findall('\d+', latency[0])[-1] )
         latency[1] = int( re.findall('\d+', latency[1])[-1] )
         latency[2] = int( latency[2])
-        return ( latency[0] , latency[1], latency[2] )
+        return [ latency[0] , latency[1], latency[2] ]
 
 
 if __name__ == "__main__":

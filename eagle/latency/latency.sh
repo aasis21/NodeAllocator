@@ -18,7 +18,7 @@ do
     if [ $status != '0' ]
     then
         latencystring=$latencystring"5000"$'\n' 
-        echo 1000000
+        echo 5000
     else
         latencystring=$latencystring"$out"$'\n' 
         echo $out

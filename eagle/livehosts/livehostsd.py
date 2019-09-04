@@ -1,5 +1,7 @@
 import os, sys, time, subprocess, sqlite3, re
 from pathlib import Path
+home = str(Path.home())
+sys.path.insert(1, home+ '/UGP/eagle')
 from daemon import Daemon
 
 

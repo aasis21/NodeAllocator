@@ -7,6 +7,7 @@ echo ""
 echo "Selected hosts are"
 cat hosts
 
+
 echo "======================================================================"
 start=`date +%s`
 echo "MPI PROGRAM STARTS : $start "
