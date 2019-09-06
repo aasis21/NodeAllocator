@@ -111,9 +111,9 @@ void read_bw(string hostname, FILE* logfile){
 	cout << n << hostname << " ";
 }
 
-void compute_process_count(){
+void compute_process_count_and_divide_load_by_cpu_count(){
 	for(int i=0;i<NUM_HOSTS;i++){
-		long double loadAvg = ( 5*allData["load_1"][i] + 3*allData["load_1"][i] + 2*allData["load_1"][i]) / 10.0;
+		long double loadAvg = ( 5*allData["load_1"][i] + 3*allData["load_5"][i] + 2*allData["load_15"][i]) / 10.0;
 		int processCount = allData["cpucount"][i] - (int)fmod(loadAvg,allData["cpucount"][i]);
 		allData["processcount"].push_back(processCount);
 
@@ -431,7 +431,7 @@ int main(int argc, char **argv){
 	}
 
 	//Find Proccess count to be allocated on each node
-	compute_process_count();
+	compute_process_count_and_divide_load_by_cpu_count();
 	if(DEBUG){
 		cout << "Process and Cpu Count\n ";
 		for(int i=0;i< NUM_HOSTS; i++){
@@ -445,7 +445,6 @@ int main(int argc, char **argv){
 		}
 	}
 	
-
 	map<string, long double> weights;
 	set_weights(weights);
 	long double comp_power[NUM_HOSTS] = {0};

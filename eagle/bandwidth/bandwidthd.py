@@ -1,6 +1,9 @@
 import os, sys, time, subprocess, sqlite3, re, shutil
 from pathlib import Path
-home = str(Path.home())
+try:
+    home = str(Path.home())
+except:
+    home = os.getenv("HOME")
 sys.path.insert(1, home+ '/UGP/eagle')
 from daemon import Daemon
 
@@ -18,7 +21,7 @@ class EagleBandwidthDaemon(Daemon):
 
     def run(self):
         while True:
-            # open(self.stdout, 'w').close()
+            open(self.stdout, 'w').close()
             # open(self.stderr, 'w').close()
             output = subprocess.run([self.script,self.hostname, self.binary, self.livehosts,self.bw ], stdout=subprocess.PIPE);
             bandwidths = output.stdout.decode("utf-8").strip(" \n" ).split('\n')
@@ -31,17 +34,18 @@ class EagleBandwidthDaemon(Daemon):
                 out.write(dump_string)
             shutil.move(self.bw + ".tmp", self.bw)
 
-            try:
-                conn = sqlite3.connect(self.db)
-                cur = conn.cursor()
-                bw_sql = "INSERT OR REPLACE INTO bw (hostA, hostB, bw) VALUES (?, ?, ?)"
-                bw_monitor_sql = "INSERT OR REPLACE INTO bw_monitor (hostA, hostB, bw) VALUES (?, ?, ?)"
-                cur.executemany(bw_sql, db_input)
-                cur.executemany(bw_monitor_sql, db_input)
-                conn.commit()
-                conn.close()
-            except:
-                time.sleep(0.2)
+            # try:
+            #     conn = sqlite3.connect(self.db)
+            #     cur = conn.cursor()
+            #     bw_sql = "INSERThome = str(Path.home())
+            #     OR REPLACE INTO bw (hostA, hostB, bw) VALUES (?, ?, ?)"
+            #     bw_monitor_sql = "INSERT OR REPLACE INTO bw_monitor (hostA, hostB, bw) VALUES (?, ?, ?)"
+            #     cur.executemany(bw_sql, db_input)
+            #     cur.executemany(bw_monitor_sql, db_input)
+            #     conn.commit()
+            #     conn.close()
+            # except:
+            #     time.sleep(0.2)
                 
             time.sleep(180)
 
@@ -69,7 +73,6 @@ if __name__ == "__main__":
         print("usage: " + sys.argv[0] + " start|stop|restart [hostname] ")
         sys.exit(2)
 
-    home = str(Path.home())
     if not os.path.isdir(home + "/.eagle/" + hostname):
         os.makedirs(home + "/.eagle/" + hostname, exist_ok=True)
 

@@ -1,6 +1,10 @@
 import os, sys, time, subprocess, psutil, json, sqlite3, re, shutil
 from pathlib import Path
-home = str(Path.home())
+try:
+    home = str(Path.home())
+except:
+    home = os.getenv("HOME")
+
 sys.path.insert(1, home+ '/UGP/eagle')
 from daemon import Daemon
 from collections import deque
@@ -34,7 +38,7 @@ class EagleNodeDaemon(Daemon):
 
     def run(self):
         while True:
-            # open(self.stdout, 'w').close()
+            open(self.stdout, 'w').close()
             # open(self.stderr, 'w').close()
             cpuCount = psutil.cpu_count(logical=True)
             coreCount = psutil.cpu_count(logical=False)
@@ -67,25 +71,25 @@ class EagleNodeDaemon(Daemon):
                 out.write(db_string)
             shutil.move(self.statfile + ".tmp", self.statfile)
 
-            try:
-                conn = sqlite3.connect(self.db)
-                cur = conn.cursor()
-                node_sql = "INSERT OR REPLACE INTO node (node, cpucount , corecount, cpufreqmin, \
-                cpufreqcurrent, cpufreqmax, load_1, load_5, load_15,band_10, band_50, band_150, util_10, \
-                util_50, util_150, memory, memory_10, memory_50, memory_150,  nodeusers ) VALUES (?, ?, \
-                ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?)"
+            # try:
+            #     conn = sqlite3.connect(self.db)
+            #     cur = conn.cursor()
+            #     node_sql = "INSERT OR REPLACE INTO node (node, cpucount , corecount, cpufreqmin, \
+            #     cpufreqcurrent, cpufreqmax, load_1, load_5, load_15,band_10, band_50, band_150, util_10, \
+            #     util_50, util_150, memory, memory_10, memory_50, memory_150,  nodeusers ) VALUES (?, ?, \
+            #     ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?)"
                 
-                node_monitor_sql = "INSERT OR REPLACE INTO node_monitor (node, cpucount , corecount, cpufreqmin, \
-                cpufreqcurrent, cpufreqmax, load_1, load_5, load_15,band_10, band_50, band_150, util_10, \
-                util_50, util_150, memory, memory_10, memory_50, memory_150,  nodeusers ) VALUES (?, ?, \
-                ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?)"
+            #     node_monitor_sql = "INSERT OR REPLACE INTO node_monitor (node, cpucount , corecount, cpufreqmin, \
+            #     cpufreqcurrent, cpufreqmax, load_1, load_5, load_15,band_10, band_50, band_150, util_10, \
+            #     util_50, util_150, memory, memory_10, memory_50, memory_150,  nodeusers ) VALUES (?, ?, \
+            #     ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?)"
         
-                cur.execute(node_sql, db_input)
-                cur.execute(node_monitor_sql, db_input)
-                conn.commit()
-                conn.close()
-            except:
-                time.sleep(0.2)
+            #     cur.execute(node_sql, db_input)
+            #     cur.execute(node_monitor_sql, db_input)
+            #     conn.commit()
+            #     conn.close()
+            # except:
+            #     time.sleep(0.2)
             
             time.sleep(2)
 
@@ -112,7 +116,7 @@ class EagleNodeDaemon(Daemon):
                         ( n_deque[0].rx - n_deque[l-1].rx ) / ( n_deque[0].time - n_deque[l-1].time ) 
             ]
         
-        return [int(n_band[0]), int(n_band[1]), int(n_band[2]) ]
+        return [int(n_band[0]//1000000), int(n_band[1]//1000000), int(n_band[2]//1000000) ]
             
     def utilization(self):
         utilization = psutil.cpu_percent()
@@ -130,7 +134,7 @@ class EagleNodeDaemon(Daemon):
                 self.utilizationSum[index] = node + self.utilizationSum[index] - removeNode
                 queue.appendleft(node)
 
-            return round( self.utilizationSum[index] / len(queue) , 4 )
+            return int(self.utilizationSum[index] // len(queue))
         return [ manageQueue(utilization, i) for i in range(3) ]
 
     def memory(self):
@@ -157,8 +161,14 @@ class EagleNodeDaemon(Daemon):
 
 
 if __name__ == "__main__":
-    output = subprocess.run(["hostname"], stdout=subprocess.PIPE)
-    hostname = output.stdout.decode("utf-8").strip(" \n")
+    try:
+        output = subprocess.run(["hostname"], stdout=subprocess.PIPE)
+        hostname = output.stdout.decode("utf-8").strip(" \n")
+    except:
+        MyOut = subprocess.Popen(["hostname"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        stdout,stderr = MyOut.communicate()
+        hostname = stdout.decode("utf-8").strip(" \n")
+		
 
     if len(sys.argv) == 2:
         pass
@@ -169,7 +179,6 @@ if __name__ == "__main__":
         print("usage: " + sys.argv[0] + " start|stop|restart [hostname] ")
         sys.exit(2)
 
-    home = str(Path.home())
     if not os.path.isdir(home + "/.eagle/" + hostname):
         os.makedirs(home + "/.eagle/" + hostname, exist_ok=True)
 

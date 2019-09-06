@@ -1,6 +1,9 @@
 import os, sys, time, subprocess, sqlite3, re, shutil
 from pathlib import Path
-home = str(Path.home())
+try:
+    home = str(Path.home())
+except:
+    home = os.getenv("HOME")
 sys.path.insert(1, home+ '/UGP/eagle')
 from daemon import Daemon
 
@@ -19,7 +22,7 @@ class EagleLatencyDaemon(Daemon):
 
     def run(self):
         while True:
-            # open(self.stdout, 'w').close()
+            open(self.stdout, 'w').close()
             # open(self.stderr, 'w').close()
             output = subprocess.run([self.script, self.hostname, self.binary, self.livehosts, self.latency ], stdout=subprocess.PIPE)
             latencys = output.stdout.decode("utf-8").strip(" \n" ).split('\n')
@@ -40,17 +43,17 @@ class EagleLatencyDaemon(Daemon):
                 out.write(dump_string)
             shutil.move(self.latency + ".tmp", self.latency)
 
-            try:
-                conn = sqlite3.connect(self.db)
-                cur = conn.cursor()
-                latency_sql = "INSERT OR REPLACE INTO latency (hostA, hostB, latency) VALUES (?, ?, ?)"
-                latency_monitor_sql = "INSERT OR REPLACE INTO latency_monitor (hostA, hostB, latency) VALUES (?, ?, ?)"
-                cur.executemany(latency_sql, db_input)
-                cur.executemany(latency_monitor_sql, db_input)
-                conn.commit()
-                conn.close()
-            except:
-                time.sleep(0.2)
+            # try:
+            #     conn = sqlite3.connect(self.db)
+            #     cur = conn.cursor()
+            #     latency_sql = "INSERT OR REPLACE INTO latency (hostA, hostB, latency) VALUES (?, ?, ?)"
+            #     latency_monitor_sql = "INSERT OR REPLACE INTO latency_monitor (hostA, hostB, latency) VALUES (?, ?, ?)"
+            #     cur.executemany(latency_sql, db_input)
+            #     cur.executemany(latency_monitor_sql, db_input)
+            #     conn.commit()
+            #     conn.close()
+            # except:
+            #     time.sleep(0.2)
 
 
             time.sleep(30)
@@ -77,7 +80,6 @@ if __name__ == "__main__":
         print("usage: " + sys.argv[0] + " start|stop|restart [hostname] ")
         sys.exit(2)
 
-    home = str(Path.home())
     if not os.path.isdir(home + "/.eagle/" + hostname):
         os.makedirs(home + "/.eagle/" + hostname, exist_ok=True)
 

@@ -1,32 +1,35 @@
 import os, sys, time, subprocess, sqlite3, re
 from pathlib import Path
-home = str(Path.home())
+try:
+    home = str(Path.home())
+except:
+    home = os.getenv("HOME")
 sys.path.insert(1, home+ '/UGP/eagle')
 from daemon import Daemon
 
 
-class EagleBandwidthDaemon(Daemon):
-    def __init__(self, home, db , livehosts, script, hostname, pidfile, stdout='/dev/null', stderr='/dev/null', stdin='/dev/null'):
+class EagleLiveHostsDaemon(Daemon):
+    def __init__(self, home, db , livehosts, tmplivehosts, script, hostname, pidfile, stdout='/dev/null', stderr='/dev/null', stdin='/dev/null'):
         super().__init__(pidfile, stdout, stderr , stdin )
         self.home = home
         self.db = db
         self.livehosts = livehosts
         self.script = script
         self.hostname = hostname
+        self.tmplivehosts = tmplivehosts
 
     def run(self):
         while True:
             open(self.stdout, 'w').close()
-            open(self.stderr, 'w').close()
-            subprocess.run([self.script, self.livehosts], stdout=subprocess.PIPE)
-            time.sleep(300)
+            # open(self.stderr, 'w').close()
+            subprocess.run([self.script, self.livehosts, self.tmplivehosts], stdout=subprocess.PIPE)
+            time.sleep(180)
 
 if __name__ == "__main__":
 
     output = subprocess.run(["hostname"], stdout=subprocess.PIPE)
     hostname = output.stdout.decode("utf-8").strip(" \n")
 
-    home = str(Path.home())
     if not os.path.isdir(home + "/.eagle/" + hostname):
         os.makedirs(home + "/.eagle/" + hostname, exist_ok=True)
 
@@ -35,9 +38,10 @@ if __name__ == "__main__":
     stderr = home + "/.eagle/" + hostname + "/livehosts.err"
     db = home + "/.eagle/data.db"
     livehosts = home + "/.eagle/livehosts.txt"
+    tmplivehosts = home + "/.eagle/" + hostname + "/livehosts.txt"
     script= home + "/UGP/eagle/livehosts/livehosts.sh"
 
-    daemon = EagleBandwidthDaemon(home, db, livehosts, script, hostname, pidfilename, stdout, stderr)
+    daemon = EagleLiveHostsDaemon(home, db, livehosts,tmplivehosts, script, hostname, pidfilename, stdout, stderr)
     if len(sys.argv) == 2:
         if 'start' == sys.argv[1]:
             print("livehosts Daemon on" + hostname + " : Starting")

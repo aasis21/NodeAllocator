@@ -6,6 +6,7 @@ import time
 import atexit
 import signal
 import sqlite3
+import subprocess
 
 
 class Daemon:
@@ -125,7 +126,7 @@ class Daemon:
 		
 		It will be called after the process has been daemonized by 
 		start() or restart()."""
-
+	
 	def setupDB(self, dbfile):
 		con = sqlite3.connect(dbfile)
 		cur = con.cursor()
