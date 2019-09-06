@@ -405,6 +405,7 @@ int main(int argc, char **argv){
 	if(DEBUG){
 		cout<<"Bandwidth Data :\n";
 		for(int i=0;i<NUM_HOSTS;i++){
+			cout << hostnames[i] << "   " ;
 			for(int j=0;j<NUM_HOSTS;j++)
 				cout<<bandwidth[i][j]<<" ";
 			cout<<endl;

@@ -21,7 +21,8 @@ class EagleBandwidthDaemon(Daemon):
 
     def run(self):
         while True:
-            open(self.stdout, 'w').close()
+            start = time.time()
+            # open(self.stdout, 'w').close()
             # open(self.stderr, 'w').close()
             output = subprocess.run([self.script,self.hostname, self.binary, self.livehosts,self.bw ], stdout=subprocess.PIPE);
             bandwidths = output.stdout.decode("utf-8").strip(" \n" ).split('\n')
@@ -33,6 +34,10 @@ class EagleBandwidthDaemon(Daemon):
             with open(self.bw + ".tmp", 'w') as out:
                 out.write(dump_string)
             shutil.move(self.bw + ".tmp", self.bw)
+
+            end = time.time()
+
+            print(end-start)
 
             # try:
             #     conn = sqlite3.connect(self.db)
@@ -47,7 +52,7 @@ class EagleBandwidthDaemon(Daemon):
             # except:
             #     time.sleep(0.2)
                 
-            time.sleep(180)
+            time.sleep(240)
 
     def parse_bw(self,bw):
         bw = bw.split(" ")
@@ -56,7 +61,7 @@ class EagleBandwidthDaemon(Daemon):
         bw[1] = int( re.findall('\d+', bw[1])[-1] )
         bw[2] = int( bw[2])
 
-        return [ bw[1] , bw[0], bw[2] ]
+        return [ bw[0] , bw[1], bw[2] ]
 
 
 

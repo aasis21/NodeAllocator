@@ -4,20 +4,36 @@ binary=$2
 hostfile=$3
 bw=$4
 
-hoststring=$( cat $hostfile )
-IFS=$'\n' hosts=($hoststring)
+hoststring=$( cat $hostfile | tail -n+`grep  -n "^$me$" $hostfile  | cut -f1 -d:` 2> /dev/null )
 
-bwstring=""
+IFS=$'\n' hosts=($hoststring)
 
 for i in "${hosts[@]}"
 do
     printf "$me $i " 
-    bwstring=$bwstring"$me $i " 
-    out=$( timeout 20 mpiexec -hosts $me,$i -n 2 $binary 2> /dev/null )
+    out=$( timeout 200 mpiexec -hosts $me,$i -n 2 $binary 2> /dev/null )
     status=$?
     if [ $status != '0' ]
     then
-        bwstring=$bwstring"0"$'\n' 
+        echo 0
+    else
+        bwstring=$bwstring"$out"$'\n' 
+        echo $out
+    fi
+done
+
+
+hoststring=$( cat $hostfile | head -n `grep  -n "^$me$" $hostfile  | cut -f1 -d:` 2> /dev/null )
+
+IFS=$'\n' hosts=($hoststring)
+
+for i in "${hosts[@]}"
+do
+    printf "$me $i " 
+    out=$( timeout 200 mpiexec -hosts $me,$i -n 2 $binary 2> /dev/null )
+    status=$?
+    if [ $status != '0' ]
+    then
         echo 0
     else
         bwstring=$bwstring"$out"$'\n' 
