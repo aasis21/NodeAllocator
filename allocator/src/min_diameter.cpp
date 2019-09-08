@@ -476,8 +476,15 @@ int main(int argc, char **argv){
 
 	vector<int> G = FindBestStar(active_nodes, core_count, required_cores, comp_power);
 
+
 	if(G.size()==0)
 		cout<<"Not found\n";
+	
+	vector< pair<long double, int> > comp_power_with_index;
+	for(int i=0;i< NUM_HOSTS;i++){
+		comp_power_with_index.push_back({comp_power[i],i});
+	}
+	sort(comp_power_with_index.begin(), comp_power_with_index.end(),greater<pair<long double, int> >());
 	
 	FILE *hosts;
 	hosts = fopen("hosts","w");
@@ -490,6 +497,21 @@ int main(int argc, char **argv){
 	}
 
 	fclose(hosts);
+
+	FILE *comphosts;
+	comphosts = fopen("comphosts","w");
+	cout << "NODES ALLOCATION WITH MAX COMPUTE" << endl;
+	if(DEBUG){
+		for(int i=0; i< G.size(); i++){
+			int idx = comp_power_with_index[i].second;
+			cout << hostnames[idx] << endl;
+			fprintf(comphosts, "%s\n",  (hostnames[idx]).c_str() );
+		}
+		cout<<endl;
+	}
+
+	fclose(comphosts);
+
 	fclose(logfile);
 	return 0;
 }

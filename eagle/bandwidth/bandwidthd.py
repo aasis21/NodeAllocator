@@ -37,7 +37,7 @@ class EagleBandwidthDaemon(Daemon):
 
             end = time.time()
 
-            print(end-start)
+            # print(str(end-start))
 
             # try:
             #     conn = sqlite3.connect(self.db)
@@ -56,10 +56,10 @@ class EagleBandwidthDaemon(Daemon):
 
     def parse_bw(self,bw):
         bw = bw.split(" ")
-        print(bw)
+        # print(bw)
         bw[0] = int( re.findall('\d+', bw[0])[-1] )
         bw[1] = int( re.findall('\d+', bw[1])[-1] )
-        bw[2] = int( bw[2])
+        bw[2] = int(bw[2])
 
         return [ bw[0] , bw[1], bw[2] ]
 

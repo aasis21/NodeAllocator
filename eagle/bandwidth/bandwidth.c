@@ -12,9 +12,9 @@
 #define MAXTASKS      8192
 /* Change the next four parameters to suit your case */
 #define STARTSIZE     100000
-#define ENDSIZE       1000000
+#define ENDSIZE       800000
 #define INCREMENT     200000
-#define ROUNDTRIPS    100 
+#define ROUNDTRIPS    15 
 
 int main (int argc, char *argv[])
 {
