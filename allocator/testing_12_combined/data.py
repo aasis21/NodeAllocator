@@ -22,10 +22,10 @@ for p in process:
             # print(str(p) + "-" + str(s) + "-" + str(i) + " : " + str(time_our) + " " + str(time_compute) + " " + str(time_random) + " " + str(time_sequence) )
 
         print(str(p) + "-" + str(s) + " : " + str(sum[0]/4) + " " + str(sum[1]/4) + " " + str(sum[2]/4) + " " + str(sum[3]/4) )
-        data[0] = data[0] + [sum[0]]
-        data[1] = data[1] + [sum[1]]
-        data[2] = data[2] + [sum[2]]
-        data[3] = data[3] + [sum[3]]
+        data[0] = data[0] + [sum[0]/5]
+        data[1] = data[1] + [sum[1]/5]
+        data[2] = data[2] + [sum[2]/5]
+        data[3] = data[3] + [sum[3]/5]
 
     whole_data[p] = data
 
@@ -36,14 +36,14 @@ print(whole_data)
 for p in process:
     x = size
     plt.plot(x, whole_data[p][0], label='network and load aware')
-    plt.plot(x, whole_data[p][1], label='laod aware')
+    plt.plot(x, whole_data[p][1], label='load aware')
     plt.plot(x, whole_data[p][2], label='random allocation')
     plt.plot(x, whole_data[p][3], label='sequence based')
 
     plt.xlabel('Data size')
-    plt.ylabel('Time')
+    plt.ylabel('Time(seconds)')
 
-    plt.title("Time VS Data , Processes = " + str(p) + ", PPN = 4, Nodes = " + str(p//4))
+    plt.title("Time vs Data , Processes = " + str(p) + ", PPN = 4, Nodes = " + str(p//4))
 
     plt.legend()
     plt.savefig('process_count{0}.jpg'.format(p))

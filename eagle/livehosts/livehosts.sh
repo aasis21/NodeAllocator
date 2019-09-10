@@ -14,7 +14,7 @@ do
     fi
 done
 
-for id in {23..33}
+for id in {23..32}
 do
     ssh -q -o ConnectTimeout=2 csews$id exit 
     status=$?

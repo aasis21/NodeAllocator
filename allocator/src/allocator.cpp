@@ -288,7 +288,7 @@ void make_data_unidirectional(){
     long double max_bw = 0;
     for(int i=0;i<NUM_HOSTS;i++){
 		for(int j=0;j<NUM_HOSTS;j++){
-            if(latency[i][j] > max_bw){
+            if(bandwidth[i][j] > max_bw){
                 max_bw = bandwidth[i][j];
             }
 		}

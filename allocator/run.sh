@@ -16,12 +16,32 @@ echo "proc count : $proc_count BINARY : $binary" >> metadata.log
 echo "======================================================================" >> metadata.log
 echo "======================================================================" >> metadata.log
 
-~/UGP/allocator/src/allocator.out $proc_count $ppn >> metadata.log
+~/UGP/allocator/src/allocator_improved.out $proc_count $ppn >> metadata.log
+
+
 echo ""
-echo "Selected hosts are"
+echo "Selected Improved Algo hosts are"
+cat hostsimproved
+# echo "======================================================================"
+start=`date +%s%3N`
+# echo "MPI PROGRAM STARTS : $start "
+# echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+if (( $ppn == 0 ))
+then
+   mpiexec -n $proc_count -hostfile hostsimproved $binary >> minimd.log
+else
+    mpiexec -n $proc_count -ppn $ppn -hostfile hostsimproved $binary >> minimd.log
+fi
+end=`date +%s%3N`
+runtime=$((end-start))
+# echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+echo "MPI PROGRAM :: Total Time : $runtime"
+# echo "======================================================================"
+
+
+echo ""
+echo "Selected Algo hosts are"
 cat hosts
-
-
 # echo "======================================================================"
 start=`date +%s%3N`
 # echo "MPI PROGRAM STARTS : $start "
@@ -39,7 +59,7 @@ echo "MPI PROGRAM :: Total Time : $runtime"
 # echo "======================================================================"
 
 echo ""
-echo "Selected hosts are"
+echo "Selected min compute load hosts are"
 cat comphosts
 # echo "======================================================================"
 start=`date +%s%3N`
@@ -54,7 +74,7 @@ fi
 end=`date +%s%3N`
 runtime=$((end-start))
 # echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-echo "MPI PROGRAM MAX COMPUTE :: Total Time : $runtime"
+echo "MPI PROGRAM MIN COMPUTE LOAD :: Total Time : $runtime"
 # echo "======================================================================"
 
 
