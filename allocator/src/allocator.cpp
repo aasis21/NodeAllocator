@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <sys/time.h>
 using namespace std;
 
 int NUM_HOSTS;
@@ -581,6 +582,11 @@ int main(int argc, char **argv){
 		
 	}
 
+	// time_t current_time;
+	// current_time = time(NULL);
+	struct timespec start, end;
+	clock_gettime(CLOCK_MONOTONIC_RAW, &start);
+
 	long double comp_power[NUM_HOSTS] = {0};
 	normalize_and_compute_power(comp_power);
 
@@ -609,6 +615,11 @@ int main(int argc, char **argv){
 
 	vector<int> G = FindBestStar(active_nodes, core_count, required_cores, comp_power);
 
+	
+	clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+	uint64_t delta = (end.tv_nsec - start.tv_nsec);
+
+	cout << "Time"<< delta/1000000.0 <<"ms"<< endl;
 
 	if(G.size()==0)
 		cout<<"Not found\n";
