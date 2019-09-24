@@ -82,7 +82,7 @@ import numpy as np
 
 with open("data.pickle", "rb") as db:
     node_data = pickle.load(db)
-
+del node_data[12]
 all_stamp = []
 all_load = []
 all_util = []
@@ -112,17 +112,22 @@ for i in range(100):
     all_bw.append(bw/count)
     all_mem.append(mem/count)    
 
-print(all_stamp)
+print(node_data.keys())
 
 node_data["all"] = [all_load, all_util, all_bw, all_mem, all_mem, all_stamp]
 
 def plot_fig(node_data,keys, index, title, label , filename, y, x):
     plt.figure()
+    
     for key in keys :
         value = node_data[key]
         if value == None or len(value) != 6 or len(value[5]) < 100:
+            print("bro",len(value),len(value[5]))
             continue
-        plt.plot(list(np.linspace(0,40,90)), value[index][0:90], label=label[key])
+        if key == "all":
+            plt.plot(list(np.linspace(0,40,90)), value[index][0:90], label=label[key])
+        else:
+            plt.plot(list(np.linspace(0,40,90)), value[index][0:90], label=label[key])
 
     plt.legend()
     plt.xlabel(x)
@@ -130,13 +135,24 @@ def plot_fig(node_data,keys, index, title, label , filename, y, x):
     plt.title(title)
     plt.savefig(filename + '.jpg')
 
-keys = [ 25,"all", 12  ]
-label = {25: "Node A", 12 : "Node B" , "all" : "All nodes"}
+# keys = [ 25,"all", 12  ]
+# label = {25: "Node A", 12 : "Node B" , "all" : "All nodes"}
+k2 = 16
+k1 = 25
 
-plot_fig(node_data, keys, 0, "Load vs Time", label , "load", "Load" , "Time(hour)")
-plot_fig(node_data, keys, 1, "Utilization vs Time", label,  "util", "% Utilization", "Time(hour)" )
-plot_fig(node_data, keys, 2, "Node Network Usage vs Time", label, "bw", "Network Traffic(MBps)" , "Time(hour)")
-plot_fig(node_data, keys, 3, "Memory Usage vs Time", label,"mem", "Memory Usage(GB)", "Time(hour)")
+keys = [ k1,"all", k2 ]
+label = {k1: "Node A", k2 : "Node B" , "all" : "All nodes"}
+
+plot_fig(node_data, keys, 0, "CPU Load", label , "load", "Load" , "Time(hour)")
+plot_fig(node_data, keys, 1, "CPU Utilization", label,  "util", "% Utilization", "Time(hour)" )
+plot_fig(node_data, keys, 3, "Memory Usage", label,"mem", "Memory Usage(GB)", "Time(hour)")
+
+
+# k2 = 4
+# k1 = 1
+keys = [ k1,"all", k2 ]
+label = {k1: "Node A", k2 : "Node B" , "all" : "All nodes"}
+plot_fig(node_data, keys, 2, "Node Network Usage", label, "bw", "Network Traffic(MBps)" , "Time(hour)")
 
 # for key in sorted(node_data.keys()) :
 #     value = node_data[key]
