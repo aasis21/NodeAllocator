@@ -143,10 +143,39 @@ k1 = 25
 keys = [ k1,"all", k2 ]
 label = {k1: "Node A", k2 : "Node B" , "all" : "All nodes"}
 
-plot_fig(node_data, keys, 0, "CPU Load", label , "load", "Load" , "Time(hour)")
-plot_fig(node_data, keys, 1, "CPU Utilization", label,  "util", "% Utilization", "Time(hour)" )
-plot_fig(node_data, keys, 3, "Memory Usage", label,"mem", "Memory Usage(GB)", "Time(hour)")
+# plot_fig(node_data, keys, 0, "CPU Load", label , "load", "Load" , "Time(hour)")
+# plot_fig(node_data, keys, 1, "CPU Utilization", label,  "util", "% Utilization", "Time(hour)" )
+# plot_fig(node_data, keys, 3, "Memory Usage", label,"mem", "Memory Usage(GB)", "Time(hour)")
 
+def plot_two():
+        
+    fig, ax1 = plt.subplots()
+    color = 'tab:green'
+    ax1.set_xlabel('Time(hour)')
+    ax1.set_ylabel('% Utilization')
+    ax1.set(ylim=(0, 40))
+
+    ax1.plot(list(np.linspace(0,40,90)), node_data["all"][1][0:90], label="Utilization", color=color)
+    ax1.tick_params(axis='y')
+
+    ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+
+    color = 'tab:blue'
+    ax2.set_ylabel('Memory Usage(GB)')  # we already handled the x-label with ax1
+    ax2.set(ylim=(0, 10))
+
+    ax2.plot(list(np.linspace(0,40,90)), node_data["all"][3][0:90], color=color, label="Memory Usage")
+    ax2.tick_params(axis='y') #, labelcolor=color
+    
+    ax1.legend(loc=2)
+    ax2.legend(loc= 1)
+    # fig.tight_layout()  # otherwise the right y-label is slightly clipped
+
+    plt.title("CPU Utilization and Memory Usage")
+    plt.savefig("mem_util" + '.jpg')
+    # plt.show()
+
+plot_two()
 
 # k2 = 4
 # k1 = 1

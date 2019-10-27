@@ -6,8 +6,9 @@ latency=$4
 
 hoststring=$( cat $hostfile )
 IFS=$'\n' hosts=($hoststring)
-
 latencystring=""
+
+date > $latency.stamp
 
 for i in "${hosts[@]}"
 do

@@ -37,7 +37,8 @@ int main (int argc, char *argv[])
       // printf("Beginning latency timing test. Number of reps = %d.\n", reps);
       // printf("***************************************************\n");
       // printf("Rep#       T1               T2            deltaT\n");
-      double T1,T2,sumT,deltaT, avgT;
+      double T1,T2,sumT,deltaT, avgT, T3, T4;
+      T3 = MPI_Wtime();
       for (int n = 1; n <= reps; n++) {
          
          T1 = MPI_Wtime();    
@@ -58,8 +59,10 @@ int main (int argc, char *argv[])
          // printf("%4d  %8.8f  %8.8f  %2.8f\n", n, T1, T2, deltaT);
          sumT += deltaT;
       }
+      T4 = MPI_Wtime(); 
+
       avgT = (sumT*1000000)/reps;
-      printf("%d\n", (int)avgT);
+      printf("%d %d\n", (int)avgT, (int)( (T4-T3)*1000000)/reps  );
       // printf("*** Avg one way latency = %f microseconds\n", avgT/2);
 
    } else if (rank == 1) {

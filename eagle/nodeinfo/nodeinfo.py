@@ -24,11 +24,11 @@ class UtilizationNode:
         self.time = time
 
 class EagleNodeDaemon(Daemon):
-    def __init__(self, hostname, home, db, statfile , pidfile, stdout='/dev/null', stderr='/dev/null', stdin='/dev/null'):
+    def __init__(self, hostname, home, script, statfile , pidfile, stdout='/dev/null', stderr='/dev/null', stdin='/dev/null'):
         super().__init__(pidfile, stdout, stderr , stdin )
         self.hostname = hostname
         self.home = home
-        self.db = db
+        self.script = script
         self.statfile = statfile
         self.networkDeque =  deque(maxlen = 150)
         self.utilizationDeque =  [ deque(maxlen = 10), deque(maxlen = 50), deque(maxlen = 150)]
@@ -38,8 +38,15 @@ class EagleNodeDaemon(Daemon):
 
     def run(self):
         while True:
-            open(self.stdout, 'w').close()
-            # open(self.stderr, 'w').close()
+            print("Start")
+            start = time.time()
+            
+            if os.stat(self.stdout).st_size > 256:
+                open(self.stdout, 'w').close()
+            if os.stat(self.stderr).st_size > 256:
+                open(self.stderr, 'w').close()
+
+
             cpuCount = psutil.cpu_count(logical=True)
             coreCount = psutil.cpu_count(logical=False)
             cpu_freq = psutil.cpu_freq()
@@ -62,37 +69,17 @@ class EagleNodeDaemon(Daemon):
                 'nodeusers' : users
             }
 
-            print(stats)
-
             db_input = [hostname,cpuCount, coreCount] + cpuFreq + list(nodeLoad) + nodeBandwidth + nodeUtilization + nodeMemory + [users]
 
             db_string = ' '.join([str(elem) for elem in db_input]) 
             with open(self.statfile + ".tmp", 'w') as out:
                 out.write(db_string)
             shutil.move(self.statfile + ".tmp", self.statfile)
+            subprocess.run([self.script, self.statfile], stdout=subprocess.PIPE)
 
-            # try:
-            #     conn = sqlite3.connect(self.db)
-            #     cur = conn.cursor()
-            #     node_sql = "INSERT OR REPLACE INTO node (node, cpucount , corecount, cpufreqmin, \
-            #     cpufreqcurrent, cpufreqmax, load_1, load_5, load_15,band_10, band_50, band_150, util_10, \
-            #     util_50, util_150, memory, memory_10, memory_50, memory_150,  nodeusers ) VALUES (?, ?, \
-            #     ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?)"
-                
-            #     node_monitor_sql = "INSERT OR REPLACE INTO node_monitor (node, cpucount , corecount, cpufreqmin, \
-            #     cpufreqcurrent, cpufreqmax, load_1, load_5, load_15,band_10, band_50, band_150, util_10, \
-            #     util_50, util_150, memory, memory_10, memory_50, memory_150,  nodeusers ) VALUES (?, ?, \
-            #     ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?)"
-        
-            #     cur.execute(node_sql, db_input)
-            #     cur.execute(node_monitor_sql, db_input)
-            #     conn.commit()
-            #     conn.close()
-            # except:
-            #     time.sleep(0.2)
-            
-            time.sleep(2)
-
+            end = time.time()                
+            print("Updated at {} , Took {}s".format( time.asctime( time.localtime( time.time() ) ), end - start) )
+            time.sleep(5)            
 
     def bandwidth(self):
         # push to deque
@@ -161,14 +148,8 @@ class EagleNodeDaemon(Daemon):
 
 
 if __name__ == "__main__":
-    try:
-        output = subprocess.run(["hostname"], stdout=subprocess.PIPE)
-        hostname = output.stdout.decode("utf-8").strip(" \n")
-    except:
-        MyOut = subprocess.Popen(["hostname"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        stdout,stderr = MyOut.communicate()
-        hostname = stdout.decode("utf-8").strip(" \n")
-		
+    output = subprocess.run(["hostname"], stdout=subprocess.PIPE)
+    hostname = output.stdout.decode("utf-8").strip(" \n")
 
     if len(sys.argv) == 2:
         pass
@@ -179,6 +160,8 @@ if __name__ == "__main__":
         print("usage: " + sys.argv[0] + " start|stop|restart [hostname] ")
         sys.exit(2)
 
+    hostname = hostname.split('.')[0].strip()
+
     if not os.path.isdir(home + "/.eagle/" + hostname):
         os.makedirs(home + "/.eagle/" + hostname, exist_ok=True)
 
@@ -186,19 +169,17 @@ if __name__ == "__main__":
     stdout = home + "/.eagle/" + hostname + "/nodeinfo.log"
     stderr = home + "/.eagle/" + hostname + "/nodeinfo.err"
     statfile = home + "/.eagle/" + hostname + "/nodeinfo.txt"
-    db = home + "/.eagle/" + hostname + "/data.db"
-    daemon = EagleNodeDaemon(hostname, home, db, statfile, pidfilename, stdout, stderr)
+    script= home + "/UGP/eagle/nodeinfo/stamp.sh"
+    daemon = EagleNodeDaemon(hostname, home, script, statfile, pidfilename, stdout, stderr)
 
     if 'start' == sys.argv[1]:
         print("Node Daemon on " + hostname + " : Starting")
-        daemon.setupDB(db)
         daemon.start()
     elif 'stop' == sys.argv[1]:
         print("Node Daemon on " + hostname + " : Stop")
         daemon.stop()
     elif 'restart' == sys.argv[1]:
         print("Node Daemon on " + hostname + " : Restart")
-        daemon.setupDB(db)
         daemon.restart()
     else:
         print("Unknown command")

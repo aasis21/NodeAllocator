@@ -59,13 +59,7 @@ print(vmat,vari)
 # sizeend = 6
 # size = [8, 16, 24, 32, 40, 48]
 
-sizesrt = 1
-sizeend = 2
-size = [ 16 ]
 
-print(size)
-process =  [8,16,32,64]
-print(process)
 def find_avg_imp(base, idx):
     max_impr = 0
     min_impr = 100000000
@@ -83,16 +77,34 @@ def find_avg_imp(base, idx):
         avg_impr = avg_impr + impr_sum/(sizeend-sizesrt)
     
     avg_impr = avg_impr / len(process)
-    print("Max Impv:" + str(max_impr*100))
-    print("Avg Impv:" + str( avg_impr*100))
-    print("Min Impv:" + str(min_impr*100))        
+    # print("Max Impv:" + str(max_impr*100))
+    # print("Avg Impv:" + str( avg_impr*100))
+    # print("Min Impv:" + str(min_impr*100))        
+    return str( round(avg_impr*100,1))
 
-print("\nNetwork/load over Sequentail")
-find_avg_imp(0,3)
-print("\nNetwork/load over Random")
-find_avg_imp(0,2)
-print("\nNetwork/load over Load")
-find_avg_imp(0,1)
+
+print("Process  :   8   16   32   64 ")
+for idx, s in enumerate(size):
+    sizesrt = idx 
+    sizeend = idx + 1
+    print(f"Size = {s}: ", end="")
+    for p in [8,16,32,64]:
+        process =  [p]
+        print( find_avg_imp(0,3) , end=" ")
+    print(" ")
+        
+
+sizesrt = 0
+sizeend = 1   
+process = [64]
+print(find_avg_imp(0,3))
+
+
+
+# print("\nNetwork/load over Random")
+# find_avg_imp(0,2)
+# print("\nNetwork/load over Load")
+# find_avg_imp(0,1)
 
 # print("\n Load over Sequential")
 # find_avg_imp(1,3)

@@ -7,6 +7,7 @@ import atexit
 import signal
 import sqlite3
 import subprocess
+import psutil
 
 class Daemon:
 	"""A generic daemon class.
@@ -74,6 +75,10 @@ class Daemon:
 		try:
 			with open(self.pidfile,'r') as pf:
 				pid = int(pf.read().strip())
+			if psutil.pid_exists(pid):
+				pass
+			else:
+				pid = None
 		except:
 			pid = None
 	
