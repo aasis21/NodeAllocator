@@ -5,11 +5,13 @@
 
 int main( int argc, char *argv[])
 {
-    int myrank, size;
+    int myrank, size, len;
+    char name[MPI_MAX_PROCESSOR_NAME];
 
     MPI_Init(&argc, &argv);
     MPI_Comm_rank( MPI_COMM_WORLD, &myrank );
     MPI_Comm_size( MPI_COMM_WORLD, &size );
+    MPI_Get_processor_name(name, &len);
 
     MPI_Status status;
 
@@ -66,15 +68,21 @@ int main( int argc, char *argv[])
             
             // Taking max time of sender and reciever for bw.
             if(label[myrank] == 1){
+                MPI_Send(&len, 1 , MPI_INT, (myrank + shift) % size, 99, MPI_COMM_WORLD);
+                MPI_Send(name, len , MPI_CHAR, (myrank + shift) % size, 99, MPI_COMM_WORLD);
                 MPI_Send(&time_taken, 1 , MPI_DOUBLE, (myrank + shift) % size, 99, MPI_COMM_WORLD);
             }else if(label[myrank] == 50 || label[myrank] == 100){
                 double sender_time_taken = 0;
                 double max_time_taken = time_taken;
+                int length;
+                char other[MPI_MAX_PROCESSOR_NAME];
+                MPI_Recv(&length, 1 , MPI_INT, (myrank - shift + size) % size, 99, MPI_COMM_WORLD, &status);
+                MPI_Recv(other, length , MPI_CHAR, (myrank - shift + size) % size, 99, MPI_COMM_WORLD, &status);
                 MPI_Recv(&sender_time_taken, 1 , MPI_DOUBLE, (myrank - shift + size) % size, 99, MPI_COMM_WORLD, &status);
                 if(sender_time_taken > time_taken){
                     max_time_taken = sender_time_taken;
                 }
-                printf("csews%d csews%d %.2lf\n", (myrank - shift + size) % size, myrank,  (64 + 512 + 1024) * 1024.0 * trips / ( max_time_taken * pow(2,20) ));
+                printf("%s %s %.2lf\n", other, name,  (64 + 512 + 1024) * 1024.0 * trips / ( max_time_taken * pow(2,20) ));
             }
 
             // mark all handled source
