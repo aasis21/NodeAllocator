@@ -5,10 +5,9 @@ ppn=$2
 binary=${array[@]:4}
 echo $binary
 
-
 touch metadata.log
-touch miniamr.log
-echo "" > miniamr.log
+touch minimd.log
+echo "" > minimd.log
 
 echo "" >> metadata.log
 echo "" >> metadata.log
@@ -19,6 +18,7 @@ echo "======================================================================" >>
 
 ~/UGP/allocator/src/allocator_improved.out $proc_count $ppn >> metadata.log
 
+
 echo ""
 echo "Selected Improved Algo hosts are"
 cat hostsimproved
@@ -28,9 +28,9 @@ start=`date +%s%3N`
 # echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 if (( $ppn == 0 ))
 then
-   mpiexec -n $proc_count -hostfile hostsimproved $binary >> miniamr.log
+   mpiexec -n $proc_count -hostfile hostsimproved $binary >> minimd.log
 else
-    mpiexec -n $proc_count -ppn $ppn -hostfile hostsimproved $binary >> miniamr.log
+    mpiexec -n $proc_count -ppn $ppn -hostfile hostsimproved $binary >> minimd.log
 fi
 end=`date +%s%3N`
 runtime=$((end-start))
@@ -48,9 +48,9 @@ start=`date +%s%3N`
 # echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 if (( $ppn == 0 ))
 then
-   mpiexec -n $proc_count -hostfile hosts $binary >> miniamr.log
+   mpiexec -n $proc_count -hostfile hosts $binary >> minimd.log
 else
-    mpiexec -n $proc_count -ppn $ppn -hostfile hosts $binary >> miniamr.log
+    mpiexec -n $proc_count -ppn $ppn -hostfile hosts $binary >> minimd.log
 fi
 end=`date +%s%3N`
 runtime=$((end-start))
@@ -67,9 +67,9 @@ start=`date +%s%3N`
 # echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 if (( $ppn == 0 ))
 then
-   mpiexec -n $proc_count -hostfile comphosts $binary >> miniamr.log
+   mpiexec -n $proc_count -hostfile comphosts $binary >> minimd.log
 else
-    mpiexec -n $proc_count -ppn $ppn -hostfile comphosts $binary >> miniamr.log
+    mpiexec -n $proc_count -ppn $ppn -hostfile comphosts $binary >> minimd.log
 fi
 end=`date +%s%3N`
 runtime=$((end-start))
@@ -90,9 +90,9 @@ start=`date +%s%3N`
 # echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 if (( $ppn == 0 ))
 then
-   mpiexec -n $proc_count -hostfile randomhosts $binary >> miniamr.log
+   mpiexec -n $proc_count -hostfile randomhosts $binary >> minimd.log
 else
-    mpiexec -n $proc_count -ppn $ppn -hostfile randomhosts $binary >> miniamr.log
+    mpiexec -n $proc_count -ppn $ppn -hostfile randomhosts $binary >> minimd.log
 fi
 end=`date +%s%3N`
 runtime=$((end-start))
@@ -100,9 +100,9 @@ runtime=$((end-start))
 echo "MPI PROGRAM RANDOM :: Total Time : $runtime"
 # echo "======================================================================"
 
-numlivehosts=`wc -l < ~/.eagle/livehosts.txt`	
+numlivehosts=`wc -l < /users/btech/akashish/.eagle/livehosts.txt`	
 selectedend=`shuf -i $numhosts-$numlivehosts -n 1`	
-cat ~/.eagle/livehosts.txt | head -n $selectedend | tail -n $numhosts > sequencehosts	
+cat /users/btech/akashish/.eagle/livehosts.txt | head -n $selectedend | tail -n $numhosts > sequencehosts	
 echo ""	
 
 echo "Random sequence Selected hosts are"
@@ -113,9 +113,9 @@ start=`date +%s%3N`
 # echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"	
 if (( $ppn == 0 ))	
 then	
-   mpiexec -n $proc_count -hostfile sequencehosts $binary >> miniamr.log	
+   mpiexec -n $proc_count -hostfile sequencehosts $binary >> minimd.log	
 else	
-    mpiexec -n $proc_count -ppn $ppn -hostfile sequencehosts $binary  >> miniamr.log
+    mpiexec -n $proc_count -ppn $ppn -hostfile sequencehosts $binary  >> minimd.log
 fi	
 end=`date +%s%3N`
 runtime=$((end-start))

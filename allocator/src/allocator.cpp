@@ -62,8 +62,9 @@ int read_nodedata(string hostname, FILE* logfile){
 	return 0;
 }
 
-void read_latency(string hostname, FILE* logfile){
-	string datafile = homedir + "/.eagle/" + hostname + "/latency.txt";
+void read_latency(vector<string> hostname, FILE* logfile){
+	// string datafile = homedir + "/.eagle/" + hostname + "/latency.txt";
+	string datafile = homedir + "/.eagle/lt.txt";
   	ifstream myfile (datafile);
 	if(myfile.is_open())
 	{
@@ -75,8 +76,8 @@ void read_latency(string hostname, FILE* logfile){
 			for(string s; iss >> s; )
     			token.push_back(s);
 			if(token.size() == 3){
-				int u = stoi(token[0]);
-				int v = stoi(token[1]);
+				int u = stoi(token[0].substr(5,token[0].length()-5));
+				int v = stoi(token[1].substr(5,token[1].length()-5));
 				int l = stold(token[2]);
 
 				int uidx = find(allData["node"].begin(), allData["node"].end(), u) - allData["node"].begin();
@@ -90,17 +91,16 @@ void read_latency(string hostname, FILE* logfile){
 			}
 		}
 	} else{
-		cout << "Unable to open latency file for " << hostname << endl; 
+		cout << "Unable to open latency file" << endl; 
 	}
 }
 
-void read_bw(string hostname, FILE* logfile){
-	string datafile = homedir + "/.eagle/" + hostname + "/bw.txt";
+void read_bw(vector<string> hostname, FILE* logfile){
+	string datafile = homedir + "/.eagle/bw.txt";
   	ifstream myfile (datafile);
 	int n = 0;
 	if(myfile.is_open())
 	{
-		
 		string line;
 		while ( getline (myfile,line) )
 		{
@@ -109,8 +109,8 @@ void read_bw(string hostname, FILE* logfile){
 			for(string s; iss >> s; )
     			token.push_back(s);
 			if(token.size() == 3){
-				int u = stoi(token[0] );
-				int v = stoi(token[1] );
+				int u = stoi(token[0].substr(5,token[0].length()-5));
+				int v = stoi(token[1].substr(5,token[1].length()-5));
 				int l = stold(token[2]);
 
 				int uidx = find(allData["node"].begin(), allData["node"].end(), u) - allData["node"].begin();
@@ -125,9 +125,8 @@ void read_bw(string hostname, FILE* logfile){
 				}
 		}
 	} else{
-		cout << "Unable to open bandwidth file for " << hostname << endl; 
+		cout << "Unable to open bandwidth file"<< endl; 
 	}
-	cout << n << hostname << " ";
 }
 
 
@@ -172,6 +171,7 @@ void read_topology( FILE* logfile){
 
 void read_data(FILE *logfile){
     // Initialize bandwidth
+	// vector< vector<long double> > > bandwidth(NUM_HOSTS, vector<long double> (NUM_HOSTS, 0))
 	for(int i=0;i<NUM_HOSTS;i++){
 		vector<long double> tmp;
 		for(int j=0;j<NUM_HOSTS;j++){
@@ -207,10 +207,8 @@ void read_data(FILE *logfile){
 		}
 	}
 
-	for(int idx=0; idx<NUM_HOSTS; idx++){
-		read_latency(hostnames[idx], logfile);
-		read_bw(hostnames[idx], logfile);
-	}
+	read_latency(hostnames, logfile);
+	read_bw(hostnames, logfile);
 
     read_topology(logfile);
 }
