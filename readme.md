@@ -3,7 +3,7 @@ Distributed-memory parallel programs typically run on multiple nodes in a cluste
 
 Parallel programs are generally communication-intensive. Thus the current available network bandwidth and latency between compute nodes impacts performance. Many existing resource allocation heuristics mainly consider static node attributes and a few dynamic resource attributes. This does not lead to a good allocation in case of shared clusters because the network usage and system load vary significantly at times. We present a load and network-aware greedy algorithm for resource allocation. We incorporated the current network state along with other static and dynamic resource characteristics in our heuristic. Our node allocator is lightweight, low-overhead and runs in a few milliseconds. We tested this on up to 60 heterogeneous nodes of our departmental cluster. It is able to reduce execution times of parallel benchmark codes by more than 40% on average as compared to the default.
 
-This research work is done as a part of the Undergraduate Project, Fall Semester - 2019, under guidance of [Prof. Preeti Malakar (https://www.cse.iitk.ac.in/users/pmalakar/).
+This research work is done as a part of the Undergraduate Project, Fall Semester - 2019, under guidance of [Prof. Preeti Malakar](https://www.cse.iitk.ac.in/users/pmalakar/).
 
 ## Configuration and Usage Instruction
 The Project consists of two component. One is eagle which monitor cluster live nodes, cluster current compute and network load. We use daemons that run on the cluster nodes in a distributed manner. The other one is allocator which uses the data provided by eagle to allocate specified number of nodes for user program.
