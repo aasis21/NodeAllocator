@@ -3,21 +3,21 @@ binary=$1
 dummyloadnum=$2
 while :
 do
-    numhosts=`shuf -i 6-12 -n 1`
+    numhosts=`shuf -i 4-9 -n 1`
     ppn=3
     proc_count=$(($ppn*$numhosts))
     echo "Num hosts: $numhosts | ppn : $ppn | proc_count : $proc_count"
-    cat /users/btech/akashish/.eagle/livehosts.txt | sort -R | sort -R | head -n $numhosts > loadhosts$dummyloadnum.txt
+    cat /users/btech/akashish/.eagle/livehosts.txt | sort -R | sort -R | head -n $numhosts > loadhosts.txt
     echo ""
     echo ""
     echo "Randomly Selected hosts for dummy load"
-    cat loadhosts$dummyloadnum.txt
+    cat loadhosts.txt
     echo "======================================================================"
     start=`date +%s`
     echo "MPI PROGRAM STARTS FOR RANDOM DUMMY LOAD : $start "
     echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 
-    mpiexec -n $proc_count -ppn $ppn -hostfile loadhosts$dummyloadnum.txt $binary -n 800 > /dev/null
+    mpiexec -n $proc_count -ppn $ppn -hostfile loadhosts.txt $binary > /dev/null
 
     end=`date +%s`
     runtime=$((end-start))

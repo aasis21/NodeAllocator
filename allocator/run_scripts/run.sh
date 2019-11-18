@@ -6,8 +6,6 @@ binary=${array[@]:4}
 echo $binary
 
 touch metadata.log
-touch minimd.log
-echo "" > minimd.log
 
 echo "" >> metadata.log
 echo "" >> metadata.log
@@ -26,12 +24,9 @@ cat hostsimproved
 start=`date +%s%3N`
 # echo "MPI PROGRAM STARTS : $start "
 # echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-if (( $ppn == 0 ))
-then
-   mpiexec -n $proc_count -hostfile hostsimproved $binary >> minimd.log
-else
-    mpiexec -n $proc_count -ppn $ppn -hostfile hostsimproved $binary >> minimd.log
-fi
+
+mpiexec -n $n -hostfile hostsimproved ./miniMD | tail -30 | head -16 | tee -a log 
+
 end=`date +%s%3N`
 runtime=$((end-start))
 # echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
@@ -46,12 +41,8 @@ cat hosts
 start=`date +%s%3N`
 # echo "MPI PROGRAM STARTS : $start "
 # echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-if (( $ppn == 0 ))
-then
-   mpiexec -n $proc_count -hostfile hosts $binary >> minimd.log
-else
-    mpiexec -n $proc_count -ppn $ppn -hostfile hosts $binary >> minimd.log
-fi
+mpiexec -n $n -hostfile hosts ./miniMD | tail -30 | head -16 | tee -a log 
+
 end=`date +%s%3N`
 runtime=$((end-start))
 # echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
@@ -65,12 +56,8 @@ cat comphosts
 start=`date +%s%3N`
 # echo "MPI PROGRAM STARTS WITT MAX COMPUTES: $start "
 # echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-if (( $ppn == 0 ))
-then
-   mpiexec -n $proc_count -hostfile comphosts $binary >> minimd.log
-else
-    mpiexec -n $proc_count -ppn $ppn -hostfile comphosts $binary >> minimd.log
-fi
+mpiexec -n $n -hostfile comphosts ./miniMD | tail -30 | head -16 | tee -a log 
+
 end=`date +%s%3N`
 runtime=$((end-start))
 # echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
@@ -88,12 +75,8 @@ cat randomhosts
 start=`date +%s%3N`
 # echo "MPI PROGRAM STARTS ON RANDOM : $start "
 # echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-if (( $ppn == 0 ))
-then
-   mpiexec -n $proc_count -hostfile randomhosts $binary >> minimd.log
-else
-    mpiexec -n $proc_count -ppn $ppn -hostfile randomhosts $binary >> minimd.log
-fi
+mpiexec -n $n -hostfile randomhosts ./miniMD | tail -30 | head -16 | tee -a log 
+
 end=`date +%s%3N`
 runtime=$((end-start))
 # echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
@@ -111,12 +94,7 @@ cat sequencehosts
 start=`date +%s%3N`	
 # echo "MPI PROGRAM STARTS ON SEQUENCE : $start "	
 # echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"	
-if (( $ppn == 0 ))	
-then	
-   mpiexec -n $proc_count -hostfile sequencehosts $binary >> minimd.log	
-else	
-    mpiexec -n $proc_count -ppn $ppn -hostfile sequencehosts $binary  >> minimd.log
-fi	
+mpiexec -n $n -hostfile sequencehosts ./miniMD | tail -30 | head -16 | tee -a log 
 end=`date +%s%3N`
 runtime=$((end-start))
 # echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"	

@@ -1,0 +1,1932 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<ipm_job_profile>
+<calltable nsections="1" >
+<section module="MPI" nentries="69" >
+<entry name="MPI_Init" />
+<entry name="MPI_Init_thread" />
+<entry name="MPI_Finalize" />
+<entry name="MPI_Comm_rank" />
+<entry name="MPI_Comm_size" />
+<entry name="MPI_Send" />
+<entry name="MPI_Ssend" />
+<entry name="MPI_Rsend" />
+<entry name="MPI_Bsend" />
+<entry name="MPI_Isend" />
+<entry name="MPI_Issend" />
+<entry name="MPI_Irsend" />
+<entry name="MPI_Ibsend" />
+<entry name="MPI_Recv" />
+<entry name="MPI_Irecv" />
+<entry name="MPI_Sendrecv" />
+<entry name="MPI_Sendrecv_replace" />
+<entry name="MPI_Wait" />
+<entry name="MPI_Waitany" />
+<entry name="MPI_Waitall" />
+<entry name="MPI_Waitsome" />
+<entry name="MPI_Probe" />
+<entry name="MPI_Iprobe" />
+<entry name="MPI_Send_init" />
+<entry name="MPI_Ssend_init" />
+<entry name="MPI_Rsend_init" />
+<entry name="MPI_Bsend_init" />
+<entry name="MPI_Recv_init" />
+<entry name="MPI_Buffer_attach" />
+<entry name="MPI_Buffer_detach" />
+<entry name="MPI_Test" />
+<entry name="MPI_Testany" />
+<entry name="MPI_Testall" />
+<entry name="MPI_Testsome" />
+<entry name="MPI_Start" />
+<entry name="MPI_Startall" />
+<entry name="MPI_Bcast" />
+<entry name="MPI_Reduce" />
+<entry name="MPI_Reduce_scatter" />
+<entry name="MPI_Barrier" />
+<entry name="MPI_Gather" />
+<entry name="MPI_Gatherv" />
+<entry name="MPI_Scatter" />
+<entry name="MPI_Scatterv" />
+<entry name="MPI_Scan" />
+<entry name="MPI_Allgather" />
+<entry name="MPI_Allgatherv" />
+<entry name="MPI_Allreduce" />
+<entry name="MPI_Alltoall" />
+<entry name="MPI_Alltoallv" />
+<entry name="MPI_Comm_group" />
+<entry name="MPI_Comm_compare" />
+<entry name="MPI_Comm_dup" />
+<entry name="MPI_Comm_create" />
+<entry name="MPI_Comm_split" />
+<entry name="MPI_Comm_free" />
+<entry name="MPI_Ibcast" />
+<entry name="MPI_Ireduce" />
+<entry name="MPI_Ireduce_scatter" />
+<entry name="MPI_Igather" />
+<entry name="MPI_Igatherv" />
+<entry name="MPI_Iscatter" />
+<entry name="MPI_Iscatterv" />
+<entry name="MPI_Iscan" />
+<entry name="MPI_Iallgather" />
+<entry name="MPI_Iallgatherv" />
+<entry name="MPI_Iallreduce" />
+<entry name="MPI_Ialltoall" />
+<entry name="MPI_Ialltoallv" />
+</section>
+</calltable>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="0" mpi_size="64" stamp_init="1574062927.545353" stamp_final="1574062931.489741" username="akashish" allocationname="unknown" flags="0" pid="30285" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews11</host>
+<perf wtime="3.94439e+00" utime="2.83139e+00" stime="1.15071e+00" mtime="3.35620e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb00001c7f1d7f000000001c7f19" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.92718e+00" utime="2.81893e+00" stime="1.14620e+00" mtime="3.35620e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Send" count="12936" bytes="6.0364e+07" > 2.7445e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 8.4934e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0286e+07" > 1.8382e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0286e+07" > 3.1429e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.1811e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.3894e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 9.0599e-06 </func>
+</region>
+</regions>
+<internal rank="0" log_i="1574062931.489741" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="1" mpi_size="64" stamp_init="1574062927.545488" stamp_final="1574062931.489755" username="akashish" allocationname="unknown" flags="0" pid="30286" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews11</host>
+<perf wtime="3.94427e+00" utime="3.11909e+00" stime="8.57640e-01" mtime="3.35898e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000e17fe37f00000000e17fc1" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.92718e+00" utime="3.10232e+00" stime="8.57640e-01" mtime="3.35898e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 1.9073e-06 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="5.9903e+07" > 2.6181e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.4608e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9988e+07" > 1.6932e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9988e+07" > 3.1578e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.2028e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.3476e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 5.0068e-06 </func>
+</region>
+</regions>
+<internal rank="1" log_i="1574062931.489755" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="2" mpi_size="64" stamp_init="1574062927.545508" stamp_final="1574062931.489720" username="akashish" allocationname="unknown" flags="0" pid="30287" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews11</host>
+<perf wtime="3.94421e+00" utime="3.13428e+00" stime="8.23226e-01" mtime="3.35719e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000e97fea7f00000000e97f90" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.92715e+00" utime="3.11753e+00" stime="8.23226e-01" mtime="3.35719e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="5.9933e+07" > 2.6004e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.4616e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9934e+07" > 1.8384e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9934e+07" > 3.1563e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.5089e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.2942e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 5.0068e-06 </func>
+</region>
+</regions>
+<internal rank="2" log_i="1574062931.489720" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="3" mpi_size="64" stamp_init="1574062927.545623" stamp_final="1574062931.489771" username="akashish" allocationname="unknown" flags="0" pid="30288" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews11</host>
+<perf wtime="3.94415e+00" utime="3.10477e+00" stime="8.67863e-01" mtime="3.35500e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000e07fe17f00000000df7f11" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.92721e+00" utime="3.08813e+00" stime="8.67863e-01" mtime="3.35500e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 1.1921e-06 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="5.9584e+07" > 2.6945e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.9518e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9584e+07" > 1.7402e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9584e+07" > 3.1477e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.2066e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.3867e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 4.0531e-06 </func>
+</region>
+</regions>
+<internal rank="3" log_i="1574062931.489771" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="4" mpi_size="64" stamp_init="1574062927.550809" stamp_final="1574062931.488318" username="akashish" allocationname="unknown" flags="0" pid="18213" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews7</host>
+<perf wtime="3.93751e+00" utime="3.01703e+00" stime="9.76460e-01" mtime="3.35552e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000b27ecb7e00000000ae7efc" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.92081e+00" utime="3.00595e+00" stime="9.71181e-01" mtime="3.35552e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Send" count="12936" bytes="5.9743e+07" > 2.5173e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.3788e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9769e+07" > 1.6713e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9769e+07" > 3.1561e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.6493e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.3111e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.8610e-06 </func>
+</region>
+</regions>
+<internal rank="4" log_i="1574062931.488318" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="5" mpi_size="64" stamp_init="1574062927.550984" stamp_final="1574062931.488313" username="akashish" allocationname="unknown" flags="0" pid="18214" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews7</host>
+<perf wtime="3.93733e+00" utime="3.22273e+00" stime="7.82759e-01" mtime="3.35724e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000d37fd47f00000000d37f88" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.92079e+00" utime="3.21160e+00" stime="7.77553e-01" mtime="3.35724e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Send" count="12936" bytes="6.0660e+07" > 2.6035e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.8549e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0567e+07" > 1.9133e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0567e+07" > 3.1506e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 6.0666e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.4047e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 1.9073e-06 </func>
+</region>
+</regions>
+<internal rank="5" log_i="1574062931.488313" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="6" mpi_size="64" stamp_init="1574062927.551087" stamp_final="1574062931.488322" username="akashish" allocationname="unknown" flags="0" pid="18215" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews7</host>
+<perf wtime="3.93724e+00" utime="3.09855e+00" stime="8.92133e-01" mtime="3.34890e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000d57fd67f00000000d47fb1" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.92080e+00" utime="3.08997e+00" stime="8.84539e-01" mtime="3.34890e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0290e+07" > 2.5986e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.2295e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0301e+07" > 1.8089e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0301e+07" > 3.1501e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.6522e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.3067e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.8610e-06 </func>
+</region>
+</regions>
+<internal rank="6" log_i="1574062931.488322" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="7" mpi_size="64" stamp_init="1574062927.551119" stamp_final="1574062931.488302" username="akashish" allocationname="unknown" flags="0" pid="18216" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews7</host>
+<perf wtime="3.93718e+00" utime="3.12642e+00" stime="8.53918e-01" mtime="3.34854e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000397f527f00000000357fe9" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.92076e+00" utime="3.11440e+00" stime="8.49748e-01" mtime="3.34854e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="5.9983e+07" > 2.5607e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.5713e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0035e+07" > 2.0838e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0035e+07" > 3.1471e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.6546e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.2373e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 1.9073e-06 </func>
+</region>
+</regions>
+<internal rank="7" log_i="1574062931.488302" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="8" mpi_size="64" stamp_init="1574062927.551403" stamp_final="1574062931.489837" username="akashish" allocationname="unknown" flags="0" pid="18261" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews5</host>
+<perf wtime="3.93843e+00" utime="2.86057e+00" stime="1.20994e+00" mtime="3.36000e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000e97feb7f00000000e97fd4" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.89784e+00" utime="2.82369e+00" stime="1.20659e+00" mtime="3.36000e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0030e+07" > 3.0017e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.1758e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0046e+07" > 2.4202e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0046e+07" > 3.1561e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.3301e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.4391e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.1458e-06 </func>
+</region>
+</regions>
+<internal rank="8" log_i="1574062931.489837" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="9" mpi_size="64" stamp_init="1574062927.551459" stamp_final="1574062931.489819" username="akashish" allocationname="unknown" flags="0" pid="18262" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews5</host>
+<perf wtime="3.93836e+00" utime="3.11871e+00" stime="8.78417e-01" mtime="3.37052e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000a87fc17f00000000a47f95" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.89782e+00" utime="3.07850e+00" stime="8.78413e-01" mtime="3.37052e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0183e+07" > 2.5052e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.6686e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0139e+07" > 1.4660e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0139e+07" > 3.1676e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.3484e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.4353e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 3.0994e-06 </func>
+</region>
+</regions>
+<internal rank="9" log_i="1574062931.489819" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="10" mpi_size="64" stamp_init="1574062927.551450" stamp_final="1574062931.489805" username="akashish" allocationname="unknown" flags="0" pid="18263" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews5</host>
+<perf wtime="3.93835e+00" utime="3.13641e+00" stime="9.10354e-01" mtime="3.37076e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000177f197f00000000177f2e" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.89779e+00" utime="3.10059e+00" stime="9.05984e-01" mtime="3.37076e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 1.9073e-06 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0400e+07" > 2.5028e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 6.8487e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0331e+07" > 1.7445e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0331e+07" > 3.1756e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.3341e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.4614e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 4.0531e-06 </func>
+</region>
+</regions>
+<internal rank="10" log_i="1574062931.489805" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="11" mpi_size="64" stamp_init="1574062927.551603" stamp_final="1574062931.489760" username="akashish" allocationname="unknown" flags="0" pid="18264" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews5</host>
+<perf wtime="3.93816e+00" utime="3.05544e+00" stime="9.53944e-01" mtime="3.37212e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb00004f7f507f000000004f7f0e" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.89771e+00" utime="3.01532e+00" stime="9.53944e-01" mtime="3.37212e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 2.1458e-06 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0187e+07" > 2.4824e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.5278e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0259e+07" > 1.6234e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0259e+07" > 3.1710e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.3358e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.4071e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.8610e-06 </func>
+</region>
+</regions>
+<internal rank="11" log_i="1574062931.489760" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="12" mpi_size="64" stamp_init="1574062927.546794" stamp_final="1574062931.491253" username="akashish" allocationname="unknown" flags="0" pid="20762" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews6</host>
+<perf wtime="3.94446e+00" utime="2.87521e+00" stime="1.09613e+00" mtime="3.28814e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000b87fba7f00000000b87ff4" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.92688e+00" utime="2.86351e+00" stime="1.09059e+00" mtime="3.28814e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0842e+07" > 3.0061e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.7212e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0776e+07" > 2.2254e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0776e+07" > 3.0780e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.4765e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.5130e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.8610e-06 </func>
+</region>
+</regions>
+<internal rank="12" log_i="1574062931.491253" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="13" mpi_size="64" stamp_init="1574062927.546798" stamp_final="1574062931.491300" username="akashish" allocationname="unknown" flags="0" pid="20763" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews6</host>
+<perf wtime="3.94450e+00" utime="3.05927e+00" stime="9.29908e-01" mtime="3.28393e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000487f497f00000000477f2a" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.92699e+00" utime="3.04200e+00" stime="9.29908e-01" mtime="3.28393e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="5.9390e+07" > 3.2171e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 8.2596e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9474e+07" > 2.6460e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9474e+07" > 3.0672e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.4781e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.3878e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 4.0531e-06 </func>
+</region>
+</regions>
+<internal rank="13" log_i="1574062931.491300" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="14" mpi_size="64" stamp_init="1574062927.546793" stamp_final="1574062931.491276" username="akashish" allocationname="unknown" flags="0" pid="20767" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews6</host>
+<perf wtime="3.94448e+00" utime="3.11114e+00" stime="8.71460e-01" mtime="3.27041e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000637f657f00000000637ff5" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.92692e+00" utime="3.10277e+00" stime="8.62534e-01" mtime="3.27041e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 2.8610e-06 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0217e+07" > 3.7623e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 8.0437e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0172e+07" > 2.9070e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0172e+07" > 3.0518e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.2261e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.2402e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.8610e-06 </func>
+</region>
+</regions>
+<internal rank="14" log_i="1574062931.491276" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="15" mpi_size="64" stamp_init="1574062927.546793" stamp_final="1574062931.491220" username="akashish" allocationname="unknown" flags="0" pid="20768" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews6</host>
+<perf wtime="3.94443e+00" utime="3.01588e+00" stime="9.75644e-01" mtime="3.28117e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000197f1b7f00000000197f2e" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.92690e+00" utime="3.00311e+00" stime="9.71183e-01" mtime="3.28117e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 1.1921e-06 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 2.1458e-06 </func>
+<func name="MPI_Send" count="12936" bytes="6.0052e+07" > 3.2669e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.9129e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0045e+07" > 2.2235e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0045e+07" > 3.0676e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.2340e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.4278e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 7.1526e-06 </func>
+</region>
+</regions>
+<internal rank="15" log_i="1574062931.491220" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="16" mpi_size="64" stamp_init="1574062927.540936" stamp_final="1574062931.490052" username="akashish" allocationname="unknown" flags="0" pid="3493" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews3</host>
+<perf wtime="3.94912e+00" utime="2.74364e+00" stime="1.26658e+00" mtime="3.37090e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000b57fb77f00000000b57f49" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.92965e+00" utime="2.72872e+00" stime="1.26225e+00" mtime="3.37090e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0003e+07" > 2.5658e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.3958e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9966e+07" > 1.5442e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9966e+07" > 3.1670e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.6674e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.7075e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 4.0531e-06 </func>
+</region>
+</regions>
+<internal rank="16" log_i="1574062931.490052" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="17" mpi_size="64" stamp_init="1574062927.540936" stamp_final="1574062931.490042" username="akashish" allocationname="unknown" flags="0" pid="3494" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews3</host>
+<perf wtime="3.94911e+00" utime="3.01235e+00" stime="9.89165e-01" mtime="3.37268e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000377f397f00000000377f9a" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.92963e+00" utime="3.00103e+00" stime="9.81193e-01" mtime="3.37268e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="5.9746e+07" > 2.4376e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 8.8223e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9836e+07" > 1.5559e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9836e+07" > 3.1560e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.6853e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.6812e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 4.0531e-06 </func>
+</region>
+</regions>
+<internal rank="17" log_i="1574062931.490042" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="18" mpi_size="64" stamp_init="1574062927.540978" stamp_final="1574062931.490035" username="akashish" allocationname="unknown" flags="0" pid="3495" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews3</host>
+<perf wtime="3.94906e+00" utime="3.15303e+00" stime="8.57397e-01" mtime="3.37004e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000297f2b7f00000000297f2c" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.92965e+00" utime="3.13825e+00" stime="8.53029e-01" mtime="3.37004e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0378e+07" > 2.4731e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.5890e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0403e+07" > 1.6725e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0403e+07" > 3.1657e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.6756e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.6401e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.1458e-06 </func>
+</region>
+</regions>
+<internal rank="18" log_i="1574062931.490035" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="19" mpi_size="64" stamp_init="1574062927.541043" stamp_final="1574062931.490054" username="akashish" allocationname="unknown" flags="0" pid="3496" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews3</host>
+<perf wtime="3.94901e+00" utime="3.05067e+00" stime="9.47180e-01" mtime="3.37363e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000607f627f00000000607fb2" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.92965e+00" utime="3.03594e+00" stime="9.42822e-01" mtime="3.37363e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0416e+07" > 2.4217e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 8.3724e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0323e+07" > 1.7364e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0323e+07" > 3.1614e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.6899e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.6882e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.1458e-06 </func>
+</region>
+</regions>
+<internal rank="19" log_i="1574062931.490054" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="20" mpi_size="64" stamp_init="1574062927.551099" stamp_final="1574062931.489923" username="akashish" allocationname="unknown" flags="0" pid="23748" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews15</host>
+<perf wtime="3.93882e+00" utime="2.95669e+00" stime="1.09721e+00" mtime="3.37241e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000667f687f00000000667f64" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.89699e+00" utime="2.91968e+00" stime="1.09268e+00" mtime="3.37241e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="5.9889e+07" > 2.4604e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 9.3727e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9928e+07" > 1.8306e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9928e+07" > 3.1492e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.1959e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.7889e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.8610e-06 </func>
+</region>
+</regions>
+<internal rank="20" log_i="1574062931.489923" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="21" mpi_size="64" stamp_init="1574062927.551242" stamp_final="1574062931.489941" username="akashish" allocationname="unknown" flags="0" pid="23749" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews15</host>
+<perf wtime="3.93870e+00" utime="3.31721e+00" stime="7.62365e-01" mtime="3.36332e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000937f947f00000000927ff0" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.89697e+00" utime="3.27983e+00" stime="7.58261e-01" mtime="3.36332e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 1.1921e-06 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0160e+07" > 3.1729e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 9.2166e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0109e+07" > 2.5654e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0109e+07" > 3.1340e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.1877e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.7677e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 4.0531e-06 </func>
+</region>
+</regions>
+<internal rank="21" log_i="1574062931.489941" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="22" mpi_size="64" stamp_init="1574062927.551376" stamp_final="1574062931.490012" username="akashish" allocationname="unknown" flags="0" pid="23750" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews15</host>
+<perf wtime="3.93864e+00" utime="3.20069e+00" stime="8.41594e-01" mtime="3.36716e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000957f977f00000000957f4c" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.89695e+00" utime="3.16297e+00" stime="8.37879e-01" mtime="3.36716e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="5.9839e+07" > 2.6618e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 9.0674e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9900e+07" > 1.8628e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9900e+07" > 3.1470e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.2023e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.5846e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.8610e-06 </func>
+</region>
+</regions>
+<internal rank="22" log_i="1574062931.490012" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="23" mpi_size="64" stamp_init="1574062927.551581" stamp_final="1574062931.489906" username="akashish" allocationname="unknown" flags="0" pid="23751" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews15</host>
+<perf wtime="3.93833e+00" utime="3.30915e+00" stime="7.93168e-01" mtime="3.36786e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000b37fb57f00000000b37fa9" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.89696e+00" utime="3.27618e+00" stime="7.85014e-01" mtime="3.36786e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Send" count="12936" bytes="6.0686e+07" > 2.4859e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 9.3352e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0645e+07" > 1.6766e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0645e+07" > 3.1452e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.5759e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.7179e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 4.0531e-06 </func>
+</region>
+</regions>
+<internal rank="23" log_i="1574062931.489906" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="24" mpi_size="64" stamp_init="1574062927.586805" stamp_final="1574062931.486634" username="akashish" allocationname="unknown" flags="0" pid="29683" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews14</host>
+<perf wtime="3.89983e+00" utime="2.93630e+00" stime="1.15656e+00" mtime="3.37253e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000e77fe97f00000000e77fa8" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.85737e+00" utime="2.89922e+00" stime="1.15151e+00" mtime="3.37253e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 1.9073e-06 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Send" count="12936" bytes="6.0051e+07" > 2.4106e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.6079e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0056e+07" > 1.7405e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0056e+07" > 3.1694e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.5020e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.5720e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 3.0994e-06 </func>
+</region>
+</regions>
+<internal rank="24" log_i="1574062931.486634" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="25" mpi_size="64" stamp_init="1574062927.586802" stamp_final="1574062931.486687" username="akashish" allocationname="unknown" flags="0" pid="29684" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews14</host>
+<perf wtime="3.89988e+00" utime="3.22729e+00" stime="8.97596e-01" mtime="3.36629e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000197f1b7f00000000197fbf" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.85733e+00" utime="3.19014e+00" stime="8.92518e-01" mtime="3.36629e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0881e+07" > 2.5263e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 8.0467e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0829e+07" > 1.9853e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0829e+07" > 3.1574e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.7564e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.5387e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 3.0994e-06 </func>
+</region>
+</regions>
+<internal rank="25" log_i="1574062931.486687" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="26" mpi_size="64" stamp_init="1574062927.586811" stamp_final="1574062931.486614" username="akashish" allocationname="unknown" flags="0" pid="29685" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews14</host>
+<perf wtime="3.89980e+00" utime="3.04828e+00" stime="9.64262e-01" mtime="3.36919e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb00004a7f4b7f000000004a7fd7" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.85733e+00" utime="3.00620e+00" stime="9.64262e-01" mtime="3.36919e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="5.9548e+07" > 2.6188e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 8.2943e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9684e+07" > 2.0285e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9684e+07" > 3.1572e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.7523e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.5070e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 1.9073e-06 </func>
+</region>
+</regions>
+<internal rank="26" log_i="1574062931.486614" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="27" mpi_size="64" stamp_init="1574062927.586808" stamp_final="1574062931.486649" username="akashish" allocationname="unknown" flags="0" pid="29686" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews14</host>
+<perf wtime="3.89984e+00" utime="3.24224e+00" stime="7.47145e-01" mtime="3.36874e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb00009a7fb37f00000000967f2f" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.85738e+00" utime="3.21051e+00" stime="7.36866e-01" mtime="3.36874e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0789e+07" > 2.4382e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 8.6130e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0715e+07" > 1.8208e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0715e+07" > 3.1537e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.7702e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.6946e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 3.0994e-06 </func>
+</region>
+</regions>
+<internal rank="27" log_i="1574062931.486649" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="28" mpi_size="64" stamp_init="1574062927.525185" stamp_final="1574062931.490989" username="akashish" allocationname="unknown" flags="0" pid="23193" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews12</host>
+<perf wtime="3.96580e+00" utime="2.75340e+00" stime="1.24090e+00" mtime="3.37164e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb00006f7f707f000000006f7f1e" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.94631e+00" utime="2.73425e+00" stime="1.24090e+00" mtime="3.37164e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Send" count="12936" bytes="6.0041e+07" > 2.3934e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 8.2943e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0036e+07" > 1.7097e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0036e+07" > 3.1600e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.4381e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.7593e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.8610e-06 </func>
+</region>
+</regions>
+<internal rank="28" log_i="1574062931.490989" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="29" mpi_size="64" stamp_init="1574062927.525256" stamp_final="1574062931.490976" username="akashish" allocationname="unknown" flags="0" pid="23194" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews12</host>
+<perf wtime="3.96572e+00" utime="3.09247e+00" stime="9.21147e-01" mtime="3.37785e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000b97fba7f00000000b97f03" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.94627e+00" utime="3.07330e+00" stime="9.21147e-01" mtime="3.37785e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 1.9073e-06 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 1.1921e-06 </func>
+<func name="MPI_Send" count="12936" bytes="5.9594e+07" > 2.3874e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 8.6062e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9627e+07" > 1.8847e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9627e+07" > 3.1632e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.4517e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.7391e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 3.0994e-06 </func>
+</region>
+</regions>
+<internal rank="29" log_i="1574062931.490976" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="30" mpi_size="64" stamp_init="1574062927.525274" stamp_final="1574062931.490982" username="akashish" allocationname="unknown" flags="0" pid="23195" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews12</host>
+<perf wtime="3.96571e+00" utime="3.11031e+00" stime="9.01747e-01" mtime="3.37318e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000267f287f00000000267f45" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.94627e+00" utime="3.09184e+00" stime="9.01099e-01" mtime="3.37318e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Send" count="12936" bytes="5.9986e+07" > 2.4456e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.9720e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0048e+07" > 1.7285e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0048e+07" > 3.1654e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.4388e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.6424e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.8610e-06 </func>
+</region>
+</regions>
+<internal rank="30" log_i="1574062931.490982" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="31" mpi_size="64" stamp_init="1574062927.525347" stamp_final="1574062931.490976" username="akashish" allocationname="unknown" flags="0" pid="23196" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews12</host>
+<perf wtime="3.96563e+00" utime="3.04369e+00" stime="9.71872e-01" mtime="3.37053e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000e77fe87f00000000e77f38" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.94628e+00" utime="3.02881e+00" stime="9.67647e-01" mtime="3.37053e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 1.9073e-06 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0968e+07" > 2.3583e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 8.5353e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0857e+07" > 1.8117e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0857e+07" > 3.1576e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.4319e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.6732e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 3.0994e-06 </func>
+</region>
+</regions>
+<internal rank="31" log_i="1574062931.490976" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="32" mpi_size="64" stamp_init="1574062927.534402" stamp_final="1574062931.491424" username="akashish" allocationname="unknown" flags="0" pid="7946" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews4</host>
+<perf wtime="3.95702e+00" utime="2.69875e+00" stime="1.26202e+00" mtime="3.34311e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000c17fc27f00000000c17fd3" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.93942e+00" utime="2.68158e+00" stime="1.26176e+00" mtime="3.34311e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0058e+07" > 2.7615e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 6.6413e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0062e+07" > 1.9534e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0062e+07" > 3.1470e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 6.0174e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.4137e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 5.0068e-06 </func>
+</region>
+</regions>
+<internal rank="32" log_i="1574062931.491424" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="33" mpi_size="64" stamp_init="1574062927.534299" stamp_final="1574062931.491444" username="akashish" allocationname="unknown" flags="0" pid="7950" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews4</host>
+<perf wtime="3.95715e+00" utime="2.97779e+00" stime="9.82346e-01" mtime="3.34106e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000e77fe97f00000000e77f6f" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.94181e+00" utime="2.97073e+00" stime="9.74393e-01" mtime="3.34106e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 2.1458e-06 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="5.9773e+07" > 2.8577e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 6.8541e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9741e+07" > 2.1274e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9741e+07" > 3.1414e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 6.0179e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.4385e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 3.0994e-06 </func>
+</region>
+</regions>
+<internal rank="33" log_i="1574062931.491444" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="34" mpi_size="64" stamp_init="1574062927.534288" stamp_final="1574062931.491371" username="akashish" allocationname="unknown" flags="0" pid="7952" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews4</host>
+<perf wtime="3.95708e+00" utime="3.03521e+00" stime="9.37429e-01" mtime="3.32237e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000697f6a7f00000000687fee" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.94171e+00" utime="3.02814e+00" stime="9.29406e-01" mtime="3.32237e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 3.0994e-06 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="5.9810e+07" > 3.5257e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 5.6369e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9866e+07" > 2.8472e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9866e+07" > 3.1281e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 6.0029e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.3765e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.8610e-06 </func>
+</region>
+</regions>
+<internal rank="34" log_i="1574062931.491371" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="35" mpi_size="64" stamp_init="1574062927.534639" stamp_final="1574062931.491410" username="akashish" allocationname="unknown" flags="0" pid="7953" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews4</host>
+<perf wtime="3.95677e+00" utime="3.12005e+00" stime="8.70231e-01" mtime="3.33866e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb00007c7f7d7f000000007c7f54" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.93918e+00" utime="3.10284e+00" stime="8.70046e-01" mtime="3.33866e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 1.1921e-06 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0358e+07" > 2.8260e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.1452e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0299e+07" > 1.8575e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0299e+07" > 3.1373e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.9981e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.3796e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 4.0531e-06 </func>
+</region>
+</regions>
+<internal rank="35" log_i="1574062931.491410" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="36" mpi_size="64" stamp_init="1574062927.519627" stamp_final="1574062931.491399" username="akashish" allocationname="unknown" flags="0" pid="28475" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews9</host>
+<perf wtime="3.97177e+00" utime="2.69926e+00" stime="1.25916e+00" mtime="3.28969e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000a17fa37f00000000a17fcd" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.95666e+00" utime="2.68835e+00" stime="1.25523e+00" mtime="3.28969e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="5.9712e+07" > 3.6325e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 9.5808e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9698e+07" > 3.3259e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9698e+07" > 3.0547e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.9268e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.3573e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.8610e-06 </func>
+</region>
+</regions>
+<internal rank="36" log_i="1574062931.491399" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="37" mpi_size="64" stamp_init="1574062927.519566" stamp_final="1574062931.491373" username="akashish" allocationname="unknown" flags="0" pid="28476" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews9</host>
+<perf wtime="3.97181e+00" utime="3.22741e+00" stime="7.46974e-01" mtime="3.28223e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb00001b7f1d7f000000001b7f83" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.95659e+00" utime="3.21474e+00" stime="7.44637e-01" mtime="3.28223e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 1.1921e-06 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0081e+07" > 3.6951e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 1.0488e-01 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0051e+07" > 3.0053e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0051e+07" > 3.0378e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.9364e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.3634e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.8610e-06 </func>
+</region>
+</regions>
+<internal rank="37" log_i="1574062931.491373" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="38" mpi_size="64" stamp_init="1574062927.519550" stamp_final="1574062931.491478" username="akashish" allocationname="unknown" flags="0" pid="28477" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews9</host>
+<perf wtime="3.97193e+00" utime="3.13508e+00" stime="7.63296e-01" mtime="3.26915e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000967f977f00000000957faa" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.95658e+00" utime="3.12655e+00" stime="7.56837e-01" mtime="3.26915e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 1.9073e-06 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="5.9627e+07" > 3.7976e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 9.9739e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9715e+07" > 3.2828e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9715e+07" > 3.0296e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.9402e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.2644e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.8610e-06 </func>
+</region>
+</regions>
+<internal rank="38" log_i="1574062931.491478" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="39" mpi_size="64" stamp_init="1574062927.519843" stamp_final="1574062931.491907" username="akashish" allocationname="unknown" flags="0" pid="28478" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews9</host>
+<perf wtime="3.97206e+00" utime="3.17080e+00" stime="7.98530e-01" mtime="3.30806e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000ec7fed7f00000000eb7f76" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.95253e+00" utime="3.15325e+00" stime="7.96724e-01" mtime="3.30806e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 1.1921e-06 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Send" count="12936" bytes="6.0452e+07" > 3.2660e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 1.0313e-01 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0404e+07" > 2.5427e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0404e+07" > 3.0709e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.8968e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.2958e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 5.0068e-06 </func>
+</region>
+</regions>
+<internal rank="39" log_i="1574062931.491907" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="40" mpi_size="64" stamp_init="1574062927.688670" stamp_final="1574062931.490251" username="akashish" allocationname="unknown" flags="0" pid="12636" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews18</host>
+<perf wtime="3.80158e+00" utime="2.88269e+00" stime="1.13655e+00" mtime="3.37049e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb00004b7f4c7f000000004b7fda" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.76566e+00" utime="2.85191e+00" stime="1.13171e+00" mtime="3.37049e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 1.1921e-06 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="5.9943e+07" > 2.5185e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 8.6026e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9926e+07" > 1.7536e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9926e+07" > 3.1583e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.6989e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.3561e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.8610e-06 </func>
+</region>
+</regions>
+<internal rank="40" log_i="1574062931.490251" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="41" mpi_size="64" stamp_init="1574062927.688689" stamp_final="1574062931.490246" username="akashish" allocationname="unknown" flags="0" pid="12637" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews18</host>
+<perf wtime="3.80156e+00" utime="3.19407e+00" stime="7.91738e-01" mtime="3.36644e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000d97ff37f00000000d67fa9" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.76564e+00" utime="3.16334e+00" stime="7.86825e-01" mtime="3.36644e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0581e+07" > 2.5464e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 9.3362e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0596e+07" > 1.7843e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0596e+07" > 3.1469e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.7065e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.3220e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.8610e-06 </func>
+</region>
+</regions>
+<internal rank="41" log_i="1574062931.490246" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="42" mpi_size="64" stamp_init="1574062927.688730" stamp_final="1574062931.490257" username="akashish" allocationname="unknown" flags="0" pid="12638" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews18</host>
+<perf wtime="3.80153e+00" utime="3.12704e+00" stime="8.89575e-01" mtime="3.36048e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000e27fe47f00000000e27f9a" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.76565e+00" utime="3.09636e+00" stime="8.84611e-01" mtime="3.36048e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Send" count="12936" bytes="5.9814e+07" > 2.6445e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 8.5673e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9874e+07" > 1.9810e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9874e+07" > 3.1479e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.9993e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.2460e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 1.9073e-06 </func>
+</region>
+</regions>
+<internal rank="42" log_i="1574062931.490257" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="43" mpi_size="64" stamp_init="1574062927.688805" stamp_final="1574062931.490251" username="akashish" allocationname="unknown" flags="0" pid="12639" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews18</host>
+<perf wtime="3.80145e+00" utime="3.16006e+00" stime="8.45805e-01" mtime="3.36702e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000647f657f00000000647f4e" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.76568e+00" utime="3.12473e+00" stime="8.45642e-01" mtime="3.36702e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0430e+07" > 2.4048e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 9.8882e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0327e+07" > 1.6277e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0327e+07" > 3.1431e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.9946e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.3386e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.8610e-06 </func>
+</region>
+</regions>
+<internal rank="43" log_i="1574062931.490251" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="44" mpi_size="64" stamp_init="1574062927.237356" stamp_final="1574062931.490352" username="akashish" allocationname="unknown" flags="0" pid="2419" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews22</host>
+<perf wtime="4.25300e+00" utime="2.92090e+00" stime="1.07632e+00" mtime="3.37192e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb00007a7f7b7f000000007a7f7a" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="4.23769e+00" utime="2.90605e+00" stime="1.07611e+00" mtime="3.37192e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="5.9890e+07" > 2.4624e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 8.1713e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9913e+07" > 1.7505e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9913e+07" > 3.1635e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.1460e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.5164e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 1.9073e-06 </func>
+</region>
+</regions>
+<internal rank="44" log_i="1574062931.490352" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="45" mpi_size="64" stamp_init="1574062927.237506" stamp_final="1574062931.490318" username="akashish" allocationname="unknown" flags="0" pid="2420" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews22</host>
+<perf wtime="4.25281e+00" utime="3.16885e+00" stime="8.35616e-01" mtime="3.37208e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000b97fbb7f00000000b97f99" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="4.23766e+00" utime="3.15404e+00" stime="8.35450e-01" mtime="3.37208e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Send" count="12936" bytes="5.9933e+07" > 2.3896e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 8.9753e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9943e+07" > 1.7760e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9943e+07" > 3.1549e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.4560e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.6324e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 5.0068e-06 </func>
+</region>
+</regions>
+<internal rank="45" log_i="1574062931.490318" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="46" mpi_size="64" stamp_init="1574062927.237112" stamp_final="1574062931.490329" username="akashish" allocationname="unknown" flags="0" pid="2421" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews22</host>
+<perf wtime="4.25322e+00" utime="3.25755e+00" stime="7.52215e-01" mtime="3.36671e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000867f887f00000000867faa" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="4.23765e+00" utime="3.24716e+00" stime="7.47250e-01" mtime="3.36671e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Send" count="12936" bytes="5.9636e+07" > 2.4529e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.8755e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9699e+07" > 1.6696e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9699e+07" > 3.1623e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.1479e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.4293e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 1.9073e-06 </func>
+</region>
+</regions>
+<internal rank="46" log_i="1574062931.490329" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="47" mpi_size="64" stamp_init="1574062927.237440" stamp_final="1574062931.490360" username="akashish" allocationname="unknown" flags="0" pid="2422" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews22</host>
+<perf wtime="4.25292e+00" utime="3.20674e+00" stime="8.15164e-01" mtime="3.36064e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000717f737f00000000717f8a" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="4.23773e+00" utime="3.19588e+00" stime="8.11023e-01" mtime="3.36064e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0449e+07" > 2.5525e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 8.5761e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0395e+07" > 1.8942e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0395e+07" > 3.1480e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.1489e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.4261e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 4.0531e-06 </func>
+</region>
+</regions>
+<internal rank="47" log_i="1574062931.490360" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="48" mpi_size="64" stamp_init="1574062927.541678" stamp_final="1574062931.488871" username="akashish" allocationname="unknown" flags="0" pid="26219" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews13</host>
+<perf wtime="3.94719e+00" utime="2.77109e+00" stime="1.22638e+00" mtime="3.37355e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000f27ff47f00000000f27fdd" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.90303e+00" utime="2.72926e+00" stime="1.22436e+00" mtime="3.37355e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0590e+07" > 2.3955e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 8.3272e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0538e+07" > 1.5776e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0538e+07" > 3.1660e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.7104e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.3023e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 5.0068e-06 </func>
+</region>
+</regions>
+<internal rank="48" log_i="1574062931.488871" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="49" mpi_size="64" stamp_init="1574062927.541804" stamp_final="1574062931.488888" username="akashish" allocationname="unknown" flags="0" pid="26220" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews13</host>
+<perf wtime="3.94708e+00" utime="3.09915e+00" stime="9.32650e-01" mtime="3.36357e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000457f477f00000000457f6e" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.90304e+00" utime="3.05730e+00" stime="9.30671e-01" mtime="3.36357e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="5.9873e+07" > 3.0136e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.9357e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9839e+07" > 2.3453e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9839e+07" > 3.1525e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.9671e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.3276e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 4.0531e-06 </func>
+</region>
+</regions>
+<internal rank="49" log_i="1574062931.488888" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="50" mpi_size="64" stamp_init="1574062927.541761" stamp_final="1574062931.488869" username="akashish" allocationname="unknown" flags="0" pid="26221" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews13</host>
+<perf wtime="3.94711e+00" utime="3.13557e+00" stime="8.83765e-01" mtime="3.37521e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000e37fe47f00000000e27f10" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.90302e+00" utime="3.09205e+00" stime="8.83407e-01" mtime="3.37521e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 2.1458e-06 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="5.9502e+07" > 2.4137e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 8.1017e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9567e+07" > 1.5907e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9567e+07" > 3.1696e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.7166e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.3102e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 6.9141e-06 </func>
+</region>
+</regions>
+<internal rank="50" log_i="1574062931.488869" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="51" mpi_size="64" stamp_init="1574062927.541814" stamp_final="1574062931.488882" username="akashish" allocationname="unknown" flags="0" pid="26222" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews13</host>
+<perf wtime="3.94707e+00" utime="3.12189e+00" stime="8.93355e-01" mtime="3.36930e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000877f887f00000000867fd0" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.90306e+00" utime="3.08023e+00" stime="8.91299e-01" mtime="3.36930e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 1.9073e-06 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="5.9747e+07" > 2.5267e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 8.3472e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9773e+07" > 1.5521e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9773e+07" > 3.1602e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.7125e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.3121e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 4.0531e-06 </func>
+</region>
+</regions>
+<internal rank="51" log_i="1574062931.488882" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="52" mpi_size="64" stamp_init="1574062927.621008" stamp_final="1574062931.492558" username="akashish" allocationname="unknown" flags="0" pid="3492" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews17</host>
+<perf wtime="3.87155e+00" utime="2.92473e+00" stime="9.88601e-01" mtime="3.18846e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000ac7fae7f00000000ac7f09" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.85240e+00" utime="2.90775e+00" stime="9.86628e-01" mtime="3.18846e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="5.9758e+07" > 3.6420e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 9.1717e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9773e+07" > 2.7514e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9773e+07" > 2.9608e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.4469e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.1300e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 5.0068e-06 </func>
+</region>
+</regions>
+<internal rank="52" log_i="1574062931.492558" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="53" mpi_size="64" stamp_init="1574062927.621019" stamp_final="1574062931.492553" username="akashish" allocationname="unknown" flags="0" pid="3493" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews17</host>
+<perf wtime="3.87153e+00" utime="3.22842e+00" stime="6.66786e-01" mtime="3.17492e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000477f497f00000000477f41" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.85238e+00" utime="3.21156e+00" stime="6.64743e-01" mtime="3.17492e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0547e+07" > 3.7264e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 9.1261e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0476e+07" > 3.0384e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0476e+07" > 2.9623e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.4500e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 7.5589e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 4.0531e-06 </func>
+</region>
+</regions>
+<internal rank="53" log_i="1574062931.492553" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="54" mpi_size="64" stamp_init="1574062927.621104" stamp_final="1574062931.492541" username="akashish" allocationname="unknown" flags="0" pid="3494" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews17</host>
+<perf wtime="3.87144e+00" utime="3.13405e+00" stime="7.41338e-01" mtime="3.15538e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000767f787f00000000767fe9" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.85235e+00" utime="3.11723e+00" stime="7.39347e-01" mtime="3.15538e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Send" count="12936" bytes="5.9999e+07" > 3.8269e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 9.6462e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0011e+07" > 2.8446e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0011e+07" > 2.9488e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.4548e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 6.3556e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 3.8147e-06 </func>
+</region>
+</regions>
+<internal rank="54" log_i="1574062931.492541" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="55" mpi_size="64" stamp_init="1574062927.621185" stamp_final="1574062931.492632" username="akashish" allocationname="unknown" flags="0" pid="3495" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews17</host>
+<perf wtime="3.87145e+00" utime="3.23696e+00" stime="6.54839e-01" mtime="3.14572e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000237f247f00000000227f7d" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.85242e+00" utime="3.22415e+00" stime="6.48857e-01" mtime="3.14572e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="5.9605e+07" > 3.8648e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 9.4322e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9647e+07" > 2.9075e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9647e+07" > 2.9491e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.1978e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 5.5492e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 4.0531e-06 </func>
+</region>
+</regions>
+<internal rank="55" log_i="1574062931.492632" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="56" mpi_size="64" stamp_init="1574062927.554557" stamp_final="1574062931.487761" username="akashish" allocationname="unknown" flags="0" pid="11419" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews19</host>
+<perf wtime="3.93320e+00" utime="2.92974e+00" stime="1.06377e+00" mtime="3.37346e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb00001b7f1d7f000000001b7fa8" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.91657e+00" utime="2.91356e+00" stime="1.06358e+00" mtime="3.37346e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="5.9762e+07" > 2.4664e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 6.9274e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9810e+07" > 1.3938e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9810e+07" > 3.1775e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.7425e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.4883e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.8610e-06 </func>
+</region>
+</regions>
+<internal rank="56" log_i="1574062931.487761" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="57" mpi_size="64" stamp_init="1574062927.554705" stamp_final="1574062931.487748" username="akashish" allocationname="unknown" flags="0" pid="11420" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews19</host>
+<perf wtime="3.93304e+00" utime="3.16241e+00" stime="8.47730e-01" mtime="3.37158e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000b27fb37f00000000b17f17" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.91654e+00" utime="3.14777e+00" stime="8.46103e-01" mtime="3.37158e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0150e+07" > 2.5605e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.0802e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0146e+07" > 1.6959e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0146e+07" > 3.1725e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.7454e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.5212e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.8610e-06 </func>
+</region>
+</regions>
+<internal rank="57" log_i="1574062931.487748" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="58" mpi_size="64" stamp_init="1574062927.554758" stamp_final="1574062931.487753" username="akashish" allocationname="unknown" flags="0" pid="11421" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews19</host>
+<perf wtime="3.93299e+00" utime="3.19187e+00" stime="7.72297e-01" mtime="3.35168e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000697f6a7f00000000697f64" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.91654e+00" utime="3.17587e+00" stime="7.72156e-01" mtime="3.35168e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Send" count="12936" bytes="6.0910e+07" > 3.1095e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 6.3399e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0835e+07" > 2.0769e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0835e+07" > 3.1554e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.7487e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.3954e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.8610e-06 </func>
+</region>
+</regions>
+<internal rank="58" log_i="1574062931.487753" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="59" mpi_size="64" stamp_init="1574062927.554857" stamp_final="1574062931.487778" username="akashish" allocationname="unknown" flags="0" pid="11422" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews19</host>
+<perf wtime="3.93292e+00" utime="3.19845e+00" stime="7.85829e-01" mtime="3.36721e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000607f797f000000005c7f1e" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.91657e+00" utime="3.18253e+00" stime="7.85687e-01" mtime="3.36721e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="5.9927e+07" > 2.5007e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.4165e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9949e+07" > 1.6632e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9949e+07" > 3.1656e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.7516e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.5004e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.1458e-06 </func>
+</region>
+</regions>
+<internal rank="59" log_i="1574062931.487778" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="60" mpi_size="64" stamp_init="1574062927.561985" stamp_final="1574062931.492853" username="akashish" allocationname="unknown" flags="0" pid="4777" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews24</host>
+<perf wtime="3.93087e+00" utime="2.83915e+00" stime="1.18145e+00" mtime="3.36265e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000677f687f00000000677f5e" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.88665e+00" utime="2.79972e+00" stime="1.17690e+00" mtime="3.36265e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 1.1921e-06 </func>
+<func name="MPI_Send" count="12936" bytes="6.0511e+07" > 2.4662e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.0270e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0479e+07" > 1.6994e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0479e+07" > 3.1641e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.3263e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.6599e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 4.0531e-06 </func>
+</region>
+</regions>
+<internal rank="60" log_i="1574062931.492853" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="61" mpi_size="64" stamp_init="1574062927.561994" stamp_final="1574062931.492896" username="akashish" allocationname="unknown" flags="0" pid="4778" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews24</host>
+<perf wtime="3.93090e+00" utime="3.23971e+00" stime="7.98705e-01" mtime="3.34789e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000987e9a7e00000000987eff" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.88668e+00" utime="3.19595e+00" stime="7.98550e-01" mtime="3.34789e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="5.9957e+07" > 3.3192e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.7190e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="5.9975e+07" > 2.3644e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="5.9975e+07" > 3.1341e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.3246e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.5694e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.8610e-06 </func>
+</region>
+</regions>
+<internal rank="61" log_i="1574062931.492896" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="62" mpi_size="64" stamp_init="1574062927.562111" stamp_final="1574062931.492847" username="akashish" allocationname="unknown" flags="0" pid="4779" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews24</host>
+<perf wtime="3.93074e+00" utime="3.27998e+00" stime="7.35680e-01" mtime="3.36170e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000757f767f00000000747f9a" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.88666e+00" utime="3.24212e+00" stime="7.29764e-01" mtime="3.36170e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0406e+07" > 2.5066e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.0067e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0350e+07" > 1.6651e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0350e+07" > 3.1644e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.0607e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.5393e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 2.8610e-06 </func>
+</region>
+</regions>
+<internal rank="62" log_i="1574062931.492847" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+<task ipm_version="2.0.6" cookie="nocookie" mpi_rank="63" mpi_size="64" stamp_init="1574062927.562205" stamp_final="1574062931.492843" username="akashish" allocationname="unknown" flags="0" pid="4780" >
+<job nhosts="16" ntasks="64" start="1574062927" final="1574062931" cookie="nocookie" code="unknown" >unknown</job>
+<host mach_name="x86_64" mach_info="x86_64_Linux" >csews24</host>
+<perf wtime="3.93064e+00" utime="3.14404e+00" stime="8.41423e-01" mtime="3.35927e+00" gflop="0.00000e+00" gbyte="1.85890e-02" omp_num_threads="1"></perf>
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<switch bytes_tx="0.00000e+00" bytes_rx="0.00000e+00" ></switch>
+<cmdline realpath="/users/btech/akashish/UGP/ipm/miniMD" md5sum="f636facb0000767f777f00000000757f2f" >./miniMD -s 16 </cmdline>
+<regions n="1" >
+<region label="ipm_noregion" nexits="1" wtime="3.88667e+00" utime="3.10247e+00" stime="8.39425e-01" mtime="3.35927e+00" id="0">
+<modules nmod="1">
+<module name="MPI" time="3.35620e+00" ></module>
+</modules>
+<func name="MPI_Init" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Finalize" count="1" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Comm_rank" count="3" bytes="0.0000e+00" > 9.5367e-07 </func>
+<func name="MPI_Comm_size" count="2" bytes="0.0000e+00" > 0.0000e+00 </func>
+<func name="MPI_Send" count="12936" bytes="6.0037e+07" > 2.5609e-02 </func>
+<func name="MPI_Recv" count="612" bytes="2.4480e+03" > 7.0793e-02 </func>
+<func name="MPI_Irecv" count="12324" bytes="6.0063e+07" > 1.6005e-03 </func>
+<func name="MPI_Wait" count="12324" bytes="6.0063e+07" > 3.1609e+00 </func>
+<func name="MPI_Barrier" count="14" bytes="0.0000e+00" > 5.0628e-03 </func>
+<func name="MPI_Allreduce" count="40" bytes="3.1600e+02" > 9.5305e-02 </func>
+<func name="MPI_Comm_free" count="1" bytes="0.0000e+00" > 1.9073e-06 </func>
+</region>
+</regions>
+<internal rank="63" log_i="1574062931.492843" log_t="1.5741e+09" report_delta="-1.0000e+00" fname="./akashish.1574062927.545353.ipm.xml" logrank="0" ></internal>
+</task>
+</ipm_job_profile>

@@ -81,15 +81,15 @@ void read_latency(vector<string> hostname, FILE* logfile){
 				int u = stoi(token[0].substr(5,token[0].length()-5));
 				int v = stoi(token[1].substr(5,token[1].length()-5));
 				int l = stold(token[2]);
-
 				int uidx = find(allData["node"].begin(), allData["node"].end(), u) - allData["node"].begin();
 				int vidx = find(allData["node"].begin(), allData["node"].end(), v) - allData["node"].begin();
+				// cout << uidx << " " << vidx << " " << l << endl;
 				if (uidx!=NUM_HOSTS and vidx!=NUM_HOSTS){
 					latency[uidx][vidx] = l;
 					latency[vidx][uidx] = l;
 				}
-				if(uidx==vidx)
-					latency[uidx][vidx] = 0;
+				// if(uidx==vidx and uidx < NUM_HOSTS)
+				// 	latency[uidx][vidx] = 0;
 			}
 		}
 	} else{
@@ -117,14 +117,17 @@ void read_bw(vector<string> hostname, FILE* logfile){
 
 				int uidx = find(allData["node"].begin(), allData["node"].end(), u) - allData["node"].begin();
 				int vidx = find(allData["node"].begin(), allData["node"].end(), v) - allData["node"].begin();
+				// printf("%d %d\n", uidx,vidx);
+				// cout << uidx << " " << vidx << " " << l << endl;
+
 				if (uidx!=NUM_HOSTS and vidx!=NUM_HOSTS){
 					n = n + 1;
 					bandwidth[uidx][vidx] = l;
 					bandwidth[vidx][uidx] = l;
 				}
-				if(uidx==vidx)
-					bandwidth[uidx][vidx] = 0;
-				}
+				// if(uidx==vidx and uidx < NUM_HOSTS)
+				// 	bandwidth[uidx][vidx] = 0;
+			}
 		}
 	} else{
 		cout << "Unable to open bandwidth file"<< endl; 
@@ -199,15 +202,7 @@ void read_data(FILE *logfile){
 		topology.push_back(tmp);
 	}
 
-    // Initialize topology
-	for(int i=0;i<NUM_HOSTS;i++){
-		vector<long double> tmp;
-		for(int j=0;j<NUM_HOSTS;j++){
-			tmp.push_back(0);
-		}
-		topology.push_back(tmp);
-	}
-
+	printf("Read Node Data\n");
 	for(int idx=0; idx<NUM_HOSTS; idx++){
 		int rc = read_nodedata(hostnames[idx], logfile);
 		if(rc==-1){
@@ -217,9 +212,11 @@ void read_data(FILE *logfile){
 		}
 	}
 
+	printf("Read latency Data\n");
 	read_latency(hostnames, logfile);
+	printf("Read bw Data\n");
 	read_bw(hostnames, logfile);
-
+	printf("Read Topology Data\n");
     read_topology(logfile);
 
     // Initialize network power

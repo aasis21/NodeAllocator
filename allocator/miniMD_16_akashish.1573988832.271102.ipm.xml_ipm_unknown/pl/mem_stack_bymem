@@ -1,0 +1,30 @@
+#proc areadef
+  rectangle: 1 1 6 4
+  xrange: -1 5
+  yrange:  0 0.1031648
+  xaxis.stubs: inc
+  yaxis.stubs: inc
+  xaxis.stubrange: 0 4
+  xaxis.stubvert: yes
+  xaxis.label: sorted index
+  yaxis.label: GBytes
+                                                                                
+#proc getdata
+data:
+0 csews10 0.1031648
+1 csews7 0.1031648
+2 csews11 0.1031648
+3 csews12 0.1031648
+                                                                                
+ #proc bars
+  lenfield: 3
+  locfield: 1
+  color: red
+  legendlabel: gbytes
+  barwidth: 0.666666666666667
+  outline: no
+  #saveas A
+ 
+#proc legend
+  location: max+0.4 max
+  seglen: 0.3

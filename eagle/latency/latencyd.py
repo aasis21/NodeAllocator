@@ -30,7 +30,7 @@ class EagleBandwidthDaemon(Daemon):
             subprocess.run([self.script,self.hostname, self.binary, self.livehosts,self.lt, self.tmplt ], stdout=subprocess.PIPE)
             end = time.time()                
             print("Updated at {} , Took {}s".format( time.asctime( time.localtime( time.time() ) ), end - start) )
-            time.sleep(20)
+            time.sleep(15)
 
 
 if __name__ == "__main__":

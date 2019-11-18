@@ -30,6 +30,7 @@ for p in process:
 
 data.close()
 
+
 # data = open("users.txt","r")
 
 # load_data = {}
@@ -70,12 +71,14 @@ for p in process:
 
 data.close()
 
-process = [32]
-size = [48]
+process = [4, 8,16,32,64]
+size = [8,16,24,32,40,48]
 
 load_avg = [[],[],[],[]]
+data = []
 for p in process:
     for s in size:
+        load_i = [[],[],[],[]]
         for i in range(5):
             nds = allocation[p][s][i]["our"]
             lds = [load_data[p][s][i][k] for k in nds if k in load_data[p][s][i].keys()]
@@ -94,9 +97,33 @@ for p in process:
             lds = [load_data[p][s][i][k] for k in nds if k in load_data[p][s][i].keys()]
             random_l_avg = np.mean(lds)
 
-            load_avg[0].append(our_l_avg)
-            load_avg[1].append(load_l_avg)
+            load_avg[1].append(our_l_avg)
+            load_avg[0].append(load_l_avg)
             load_avg[2].append(sequence_l_avg)
             load_avg[3].append(random_l_avg)
 
-print(np.mean(load_avg[0]), np.mean(load_avg[1]), np.mean(load_avg[2]), np.mean(load_avg[3]))
+            load_i[1].append(our_l_avg)
+            load_i[0].append(load_l_avg)
+            load_i[2].append(sequence_l_avg)
+            load_i[3].append(random_l_avg)
+        data.append([np.mean(load_i[0]), np.mean(load_i[1]), np.mean(load_i[2]), np.mean(load_i[3])])
+        print(str(p) + " | " + str(s) + " , ", round(np.mean(load_i[0]),3), "," ,round(np.mean(load_i[1]),3), "," ,round(np.mean(load_i[2]),3), "," ,round(np.mean(load_i[3]),3) )
+
+
+print("c,", round(np.mean(load_avg[0]),3), "," ,round(np.mean(load_avg[1]),3), "," ,round(np.mean(load_avg[2]),3), "," ,round(np.mean(load_avg[3]),3) )
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig1, ax1 = plt.subplots()
+ax1.set_title('Allocation Algorithm vs Average CPU Load')
+box = ax1.boxplot(load_avg,showmeans = True, autorange=True, widths=0.25, labels =['Load Aware', 'Network/Load Aware', 'Sequential', 'Random'], vert=True, patch_artist=True )
+# fill with colors
+colors = ['pink', 'lightblue', 'lightgreen', 'yellow']
+for patch, color in zip(box['boxes'], colors):
+    patch.set_facecolor(color)
+
+ax1.set_ylabel('Average CPU Load per core')
+ax1.set_ylim([0,2])
+plt.savefig('foo.png')

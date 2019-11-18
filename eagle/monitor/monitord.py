@@ -109,7 +109,7 @@ if __name__ == "__main__":
     pidfilename = home + "/.eagle/" + hostname + "/monitor.pid"
     stdout = home + "/.eagle/" + hostname + "/monitor.log"
     stderr = home + "/.eagle/" + hostname + "/monitor.err"
-    script= home + "/UGP/eagle/monitor/globalDaemonStatus.sh"
+    script= home + "/UGP/eagle/monitor/monitor_script.sh"
     hosts= home + "/.eagle/hosts.txt"
 
     daemon = EagleMonitorDaemon(home, hosts, script, pidfilename, stdout, stderr)

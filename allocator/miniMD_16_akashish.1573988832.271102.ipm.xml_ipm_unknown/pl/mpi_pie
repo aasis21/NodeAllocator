@@ -1,0 +1,36 @@
+#proc page
+                                                                                
+#proc areadef
+  rectangle: 0 0 2.5 2
+  xrange: 0 1
+  yrange: 0 1
+//  xaxis.tics: none
+//  yaxis.tics: none
+//  xaxis.stubhide: yes
+//  yaxis.stubhide: yes
+                                                                                
+#proc getdata
+ data:
+MPI_Wait 106.8507 red MPI_Wait
+MPI_Recv 2.218027 green MPI_Recv
+MPI_Send 1.002971 blue MPI_Send
+MPI_Allreduce 0.252555 yellow MPI_Allreduce
+MPI_Irecv 0.061212 purple MPI_Irecv
+MPI_Barrier 0.0502246 coral MPI_Barrier
+MPI_Comm_free 5.50745e-05 orange MPI_Comm_free
+MPI_Comm_rank 1.573565e-05 darkblue MPI_Comm_rank
+MPI_Comm_size 4.05311e-06 limegreen MPI_Comm_size
+MPI_Init 0 skyblue MPI_Init
+MPI_Finalize 0 claret MPI_Finalize
+ 
+#proc pie
+ firstslice: 0
+ datafield: 2
+ labelfield: 1
+ exactcolorfield: 3
+ center: 0.5(s) 0.6(s)
+ radius: 0.4(s)
+  
+#proc legend
+ location: 1.1(s) 1.2(s)
+ 
