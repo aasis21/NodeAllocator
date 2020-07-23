@@ -67,7 +67,7 @@ echo "MPI PROGRAM MIN COMPUTE LOAD :: Total Time : $runtime"
 
 
 numhosts=`wc -l < hosts`
-cat ~/.eagle/livehosts.txt | sort -R | head -n $numhosts > randomhosts
+cat ~/.eagle/livehosts.txt | sort -R | head -n $numhosts > randomhosts  
 echo ""
 echo "Randomly Selected hosts are"
 cat randomhosts

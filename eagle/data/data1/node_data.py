@@ -88,7 +88,8 @@ all_load = []
 all_util = []
 all_bw = []
 all_mem = []
-for i in range(100):
+tstep = 90
+for i in range(tstep):
     load = 0
     util = 0
     bw = 0
@@ -97,7 +98,7 @@ for i in range(100):
     count = 0
     for key in sorted(node_data.keys()) :
         value = node_data[key]
-        if value == None or len(value) != 6 or len(value[5]) < 100:
+        if value == None or len(value) != 6 or len(value[5]) < tstep:
             continue
         value = node_data[key]
         load = load + value[0][i]
@@ -112,6 +113,7 @@ for i in range(100):
     all_bw.append(bw/count)
     all_mem.append(mem/count)    
 
+print(count)
 print(node_data.keys())
 
 node_data["all"] = [all_load, all_util, all_bw, all_mem, all_mem, all_stamp]
@@ -175,13 +177,13 @@ def plot_two():
     plt.savefig("mem_util" + '.jpg')
     # plt.show()
 
-plot_two()
+# plot_two()
 
-# k2 = 4
-# k1 = 1
-keys = [ k1,"all", k2 ]
-label = {k1: "Node A", k2 : "Node B" , "all" : "All nodes"}
-plot_fig(node_data, keys, 2, "Node Network Usage", label, "bw", "Network Traffic(MBps)" , "Time(hour)")
+# # k2 = 4
+# # k1 = 1
+# keys = [ k1,"all", k2 ]
+# label = {k1: "Node A", k2 : "Node B" , "all" : "All nodes"}
+# plot_fig(node_data, keys, 2, "Node Network Usage", label, "bw", "Network Traffic(MBps)" , "Time(hour)")
 
 # for key in sorted(node_data.keys()) :
 #     value = node_data[key]
