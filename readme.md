@@ -1,12 +1,22 @@
 # Network and Load-aware Resource Allocator for Parallel Programs
 Distributed-memory parallel programs typically run on multiple nodes in a cluster (shared or dedicated) or a supercomputer. The parallel communication library (e.g. Message Passing Interface) takes care of the communication setup and messaging required for parallel execution. The user is expected to specify a list of nodes while executing a parallel job in an unmanaged cluster. Typically, users randomly select a few nodes without much knowledge about the current network connectivity of these nodes and the current load on these nodes. In this work, we address the problem of allocating a good set of nodes to run the parallel MPI jobs in a non-dedicated cluster with variable resource usages (varying compute load and varying available network bandwidths).
 
-Parallel programs are generally communication-intensive. Thus the current available network bandwidth and latency between compute nodes impacts performance. Many existing resource allocation heuristics mainly consider static node attributes and a few dynamic resource attributes. This does not lead to a good allocation in case of shared clusters because the network usage and system load vary significantly at times. We present a load and network-aware greedy algorithm for resource allocation. We incorporated the current network state along with other static and dynamic resource characteristics in our heuristic. Our node allocator is lightweight, low-overhead and runs in a few milliseconds. We tested this on up to 60 heterogeneous nodes of our departmental cluster. It is able to reduce execution times of parallel benchmark codes by more than 40% on average as compared to the default.
+We present a resource broker for MPI jobs in a shared cluster, considering the current compute load and available network bandwidths. MPI programs are generally communication-intensive. Thus the current network availability between the compute nodes impacts performance. Many existing resource allocation techniques mostly consider static node attributes and some dynamic resource attributes. This does not lead to a good allocation in case of shared clusters because the network usage and system load vary significantly at times. We propose a load and network-aware greedy algorithm for resource allocation which incorporated the current network state along with other static and dynamic resource characteristics in our heuristic. Our node allocator is lightweight, low-overhead and runs in a few milliseconds. We tested this on up to 60 heterogeneous nodes of our departmental cluster.  It is able to reduce execution times by more than 38% on average ascompared to the default allocation.
+
+We compare network and load-aware allocation algorithm with random, sequential and load-aware allocation. We experimented on the Intel cluster of the Department of Computer Science and Engineering, Indian Institute of Technology Kanpur. The cluster has a tree-like hierarchical topology with 4 switches. Each switch connects 10--15 nodes using Gigabit Ethernet. We used two Mantevo benchmarks, miniMD and miniFE for performance evaluation of network and load-aware allocation algorithm. MiniMD is a simple, parallel molecular dynamics (MD) mini-application while MiniFE is an proxy application for unstructured implicit finite element codes which sets up a brick-shaped problem domain of hexahedral elements.
 
 This research work is done as a part of the Undergraduate Project, Fall Semester - 2019, under guidance of [Prof. Preeti Malakar](https://www.cse.iitk.ac.in/users/pmalakar/).
 
-## Configuration and Usage Instruction
-The Project consists of two component. One is eagle which monitor cluster live nodes, cluster current compute and network load. We use daemons that run on the cluster nodes in a distributed manner. The other one is allocator which uses the data provided by eagle to allocate specified number of nodes for user program.
+## Academic publications
+- This work has been accepted at the [12th HiPC Student Research Symposium in Hyderabad, 2019](https://hipc.org/students-research-symposium/) as a poster paper. The poster can be found [here](./hipc_src_poster.pdf) and the full write-up [here](./hipc_srs_writeup.pdf).
+- This work has been accepted at [49th International Conference on Parallel Processing - ICPP in  Edmonton, Canada, 2020](https://jnamaral.github.io/icpp20/) as workshop paper. The full text can be found [here](./icpp_paper.pdf).
+
+
+## Run Configuration and Usage Instruction
+Our Project consists of two core components, namely the Resource Monitor (eagle) and Node Allocator.The figure below gives an overall workflow of
+these components. Resource Monitor is a distributed monitoring system for cluster. Resource Monitor uses light-weight daemons for periodically updating list of active nodes (livehosts) and node statistics such as CPU load, CPU utilization, memory usage and
+network status. Node Allocator allocates nodes based on user request. It considers node attributes and network dynamics. The Node Allocator uses data collected by the Resource Monitor. ![Node Allocation System Workflow](./overview.png)
+
 ### Eagle :
 This consists of a number of daemon programs that keeps running on cluster in background.
 
@@ -97,7 +107,7 @@ To shut the daemon off, stop the monitor daemon, it will kill all the other daem
 	- nodeinfo.pid
 ```
 ### Allocator :
-This program uses the data provided by eagle to allocate specified number of nodes for user program. First create the binary and then use it for allocation.
+This allocates nodes for user program based on user request using the data provided by eagle. First create the binary and then use it for allocation. To know details of its working read the paper.
 ```bash
 > cd code_repo/allocator/src
 > g++ allocator_improved.cpp -o allocator.out
