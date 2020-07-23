@@ -51,4 +51,6 @@ echo " "
 echo $monitor
 echo $livehost
 echo $ltd
+cat ~/.eagle/bw.txt.stamp
 echo $bwd
+cat ~/.eagle/lt.txt.stamp

@@ -83,15 +83,12 @@ import numpy as np
 with open("data.pickle", "rb") as db:
     node_data = pickle.load(db)
 del node_data[12]
-print(len(node_data.keys()))
-
 all_stamp = []
 all_load = []
 all_util = []
 all_bw = []
 all_mem = []
-tstep = 90
-for i in range(tstep):
+for i in range(100):
     load = 0
     util = 0
     bw = 0
@@ -100,7 +97,7 @@ for i in range(tstep):
     count = 0
     for key in sorted(node_data.keys()) :
         value = node_data[key]
-        if value == None or len(value) != 6 or len(value[5]) < tstep:
+        if value == None or len(value) != 6 or len(value[5]) < 100:
             continue
         value = node_data[key]
         load = load + value[0][i]
@@ -115,19 +112,7 @@ for i in range(tstep):
     all_bw.append(bw/count)
     all_mem.append(mem/count)    
 
-print(count)
-print(len(node_data.keys()))
-
-ct = 0
-for key in sorted(node_data.keys()) :
-    value = node_data[key]
-    if value == None or len(value) != 6 or len(value[5]) < 60 :
-        print("no")
-    else:
-        print("yes")
-        ct = ct +1
-
-print(ct)
+print(node_data.keys())
 
 node_data["all"] = [all_load, all_util, all_bw, all_mem, all_mem, all_stamp]
 
@@ -150,16 +135,17 @@ def plot_fig(node_data,keys, index, title, label , filename, y, x):
     plt.title(title)
     plt.savefig(filename + '.jpg')
 
-
+# keys = [ 25,"all", 12  ]
+# label = {25: "Node A", 12 : "Node B" , "all" : "All nodes"}
 k2 = 16
 k1 = 25
 
 keys = [ k1,"all", k2 ]
 label = {k1: "Node A", k2 : "Node B" , "all" : "All nodes"}
 
-plot_fig(node_data, keys, 0, "CPU Load", label , "load", "Load" , "Time(hour)")
-plot_fig(node_data, keys, 1, "CPU Utilization", label,  "util", "% Utilization", "Time(hour)" )
-plot_fig(node_data, keys, 3, "Memory Usage", label,"mem", "Memory Usage(GB)", "Time(hour)")
+# plot_fig(node_data, keys, 0, "CPU Load", label , "load", "Load" , "Time(hour)")
+# plot_fig(node_data, keys, 1, "CPU Utilization", label,  "util", "% Utilization", "Time(hour)" )
+# plot_fig(node_data, keys, 3, "Memory Usage", label,"mem", "Memory Usage(GB)", "Time(hour)")
 
 def plot_two():
         
@@ -191,11 +177,11 @@ def plot_two():
 
 plot_two()
 
-# # k2 = 4
-# # k1 = 1
-# keys = [ k1,"all", k2 ]
-# label = {k1: "Node A", k2 : "Node B" , "all" : "All nodes"}
-# plot_fig(node_data, keys, 2, "Node Network Usage", label, "bw", "Network Traffic(MBps)" , "Time(hour)")
+# k2 = 4
+# k1 = 1
+keys = [ k1,"all", k2 ]
+label = {k1: "Node A", k2 : "Node B" , "all" : "All nodes"}
+plot_fig(node_data, keys, 2, "Node Network Usage", label, "bw", "Network Traffic(MBps)" , "Time(hour)")
 
 # for key in sorted(node_data.keys()) :
 #     value = node_data[key]

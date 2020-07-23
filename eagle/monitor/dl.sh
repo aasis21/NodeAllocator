@@ -1,4 +1,5 @@
 #!/bin/bash
+HOSTNAME=csews4
 eagle="$HOME/.eagle/$HOSTNAME/nodeinfo.pid"
 latency="$HOME/.eagle/$HOSTNAME/ltd.pid"
 bw="$HOME/.eagle/$HOSTNAME/bwd.pid"

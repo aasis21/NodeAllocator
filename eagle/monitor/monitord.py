@@ -33,6 +33,7 @@ class EagleMonitorDaemon(Daemon):
             ltd_s=[]
             livehostd_s=[]
             for st in status:
+                print(st)
                 hosts.append(st[0])
                 if(st[1]=='down'):
                     host = st[0]
