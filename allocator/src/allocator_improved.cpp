@@ -15,8 +15,8 @@ vector<string> hostnames;
 
 map<string, int> node_attribute_direction;
 map<string, long double> node_attribute_weight;
-long double network_attribute_weight[2] = {0.3,0.7};
-long double total_load_relative_weight[2] = {0.3,0.7};
+long double network_attribute_weight[2] = {0.5,0.5};
+long double total_load_relative_weight[2] = {0.2,0.8};
 
 
 string homedir = "/users/btech/akashish";
@@ -263,24 +263,25 @@ void set_node_attribute_direction(){
 
 void set_node_attributes_weight(){
 
-	// node_attribute_weight.insert({"cpucount", 2});
-	// weights.insert({"cpufreqmax", 2});
-	// node_attribute_weight.insert({"corecount", 2});
+	node_attribute_weight.insert({"cpucount", 2});
+	node_attribute_weight.insert({"corecount", 2});
 
-	node_attribute_weight.insert({"load_1", 4});
-	node_attribute_weight.insert({"load_5", 4});
-	// weights.insert({"load_15", -4});
+	node_attribute_weight.insert({"load_1", 5});
+	node_attribute_weight.insert({"load_5", 2});
+	node_attribute_weight.insert({"load_15", 0});
 
 	node_attribute_weight.insert({"band_10", 3});
-	// weights.insert({"band_50", -7});
-	// weights.insert({"band_150", -6});
+	node_attribute_weight.insert({"band_50", 1});
+	node_attribute_weight.insert({"band_150", 0});
 
-	node_attribute_weight.insert({"util_10", 4});
-	// weights.insert({"util_50", -4});
+	node_attribute_weight.insert({"util_10", 3});
+	node_attribute_weight.insert({"util_50", 1});
+	node_attribute_weight.insert({"util_150", 0});
 
-	// // weights.insert({"memory", 2});
 	node_attribute_weight.insert({"memory_10", 2});
-	// weights.insert({"nodeusers",-1});
+	node_attribute_weight.insert({"memory_50", 0});
+	node_attribute_weight.insert({"memory_150", 0});
+
 }
 
 void compute_process_count_and_divide_load_by_cpu_count(){
@@ -860,7 +861,7 @@ int main(int argc, char **argv){
 		for(int i=0; i< G.size(); i++){
 			int idx = comp_power_with_index[i].second;
 			cout << hostnames[idx] << endl;
-			fprintf(comphosts, "%s\n",  (hostnames[idx]).c_str() );
+			fprintf(comphosts, "%s:%d\n",  (hostnames[idx]).c_str(),ppn) ;
 		}
 		cout<<endl;
 	}
